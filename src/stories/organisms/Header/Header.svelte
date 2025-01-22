@@ -3,6 +3,7 @@
 	import { fly } from 'svelte/transition';
 
 	let open = $state(false);
+	
 </script>
 
 <div class="fixed z-50 w-full flex justify-center p-8">

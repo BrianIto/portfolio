@@ -3,7 +3,7 @@
 	import Title from './Title.svelte';
 
 	const { Story } = defineMeta({
-		title: 'Atoms/Title',
+		title: 'Atoms/Typography/Title',
 		component: Title,
 		tags: ['autodocs']
 	});

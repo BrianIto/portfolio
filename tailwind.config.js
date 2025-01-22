@@ -5,7 +5,8 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['Figtree', 'ui-sans-serif', 'sans-serif']
+				sans: ['Figtree', 'ui-sans-serif', 'sans-serif'],
+				serif: ['"Source Serif 4"', 'serif']
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))'

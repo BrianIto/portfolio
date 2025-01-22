@@ -4,8 +4,8 @@
 	import HeroImage from "../../assets/hero-image.webp";
 </script>
 
-<main class="relative flex min-h-[100vh] w-[100vw] items-center overflow-x-hidden">
-	<section class=" w-[100vw] pl-36">
+<main class="relative flex min-h-[100vh] max-w-[100vw] items-center overflow-x-hidden">
+	<section class="w-[100vw] pl-36">
 		<FullLogo class="w-80" />
 		<h1 class="text-9xl font-extrabold uppercase text-amber-400">Portfolio</h1>
 		<h2 class="pt-4 text-2xl font-bold uppercase text-white">

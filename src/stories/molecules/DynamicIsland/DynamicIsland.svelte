@@ -56,23 +56,23 @@
 >
 	<div class="flex items-center gap-12 pl-5 pr-2.5">
 		<p
-			class="m-0 line-clamp-1 flex w-full flex-1 items-center gap-2 text-left font-sans duration-300"
+			class="m-0 line-clamp-1 flex w-full flex-1 items-center gap-2 text-left font-sans text-base duration-300"
 		>
 			{title}<ChevronDown class={['h-4 w-4 duration-300', open ? 'rotate-180' : '']} />
 		</p>
 		<div class="flex items-center gap-2 duration-300">
-			<p class="w-auto text-xs opacity-40">{percentage}%</p>
+			<p class="w-auto font-sans text-xs opacity-40">{percentage}%</p>
 			<DonutChart color="#FC0" {percentage} max={100} />
 		</div>
 	</div>
 
 	{#if open}
-		<div transition:slide data-testid={menuTestId} class="mt-2 w-72 rounded-lg p-2">
-			<ul>
+		<div transition:slide data-testid={menuTestId} class="mt-2 w-72 rounded-lg p-2 ">
+			<ul class="px-2">
 				{#each menuOptions as menuOption, i}
 					<li
 						transition:fly|global={{ x: 5, delay: 100 * i }}
-						class="flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-sm opacity-50 duration-300 hover:opacity-100"
+						class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 font-sans text-sm opacity-50 duration-300 hover:opacity-100"
 					>
 						{menuOption.title}
 					</li>

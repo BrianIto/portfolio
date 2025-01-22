@@ -2,7 +2,7 @@
 	/** @typedef { object } Props
 	 * @property {string[]} options - The options string array
 	 * @property {number} indexSelected - **Bindable** the index of the selected option
-	 * @property {(index: number) => void} onchange - Event for the change of the tab.
+	 * @property {((index: number) => void)=} onchange - Event for the change of the tab.
 	 */
 
 	/** @type { Props} */
