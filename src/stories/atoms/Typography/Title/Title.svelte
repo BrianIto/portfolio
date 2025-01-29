@@ -1,14 +1,16 @@
 <script>
 	/** @typedef {object} Props
 	 *@property { string} title - The title to be shown
+	 * @property { string=} id - the id of the title
 	 * @property { ("right" | "left" | 'center') = } side - the side of the element. Could be fixed to the `left` or to the `right`
 	 */
 
 	/** @type {Props} */
-	const { title, side = 'left' } = $props();
+	const { title, side = 'left', id  } = $props();
 </script>
 
 <div
+	{id}
 	class={[
 		'flex w-full text-center w-full lg:w-1/2 flex-col',
 		{ 'w-1/2 items-end': side === 'left' },

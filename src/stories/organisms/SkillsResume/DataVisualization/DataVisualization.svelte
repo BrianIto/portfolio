@@ -16,9 +16,9 @@
 			</p>
 			<p>Having great interactive charts, displayed with simple and creative way are my passion. Making them not simply
 			an SVG or PNG on a screen but to transmit information and be filtered, interacted and meaninful.</p>
-			<Button class="my-5 px-12" label="See more"></Button>
+			<a href="/posts/dataviz"><Button class="my-5 px-12" label="See more"></Button></a>
 
-			<p class="text-sm font-light opacity-70">
+			<p class="!text-sm font-light opacity-70">
 				* To see bad charts that means nothing (or worst, that lies), take a look <a
 					href="https://viz.wtf"
 					target="_blank">clicking here.</a
@@ -28,7 +28,7 @@
 
 		<section class="relative lg:-top-16 top-6 flex w-full flex-col items-start justify-start lg:pl-16">
 			<NodeChart />
-			<p class="mt-3 w-full text-center text-sm font-light">
+			<p class="mt-3 w-full text-center !text-sm font-light">
 				Try dragging a node to check interaction and <a>see the dataset</a>
 			</p>
 		</section>

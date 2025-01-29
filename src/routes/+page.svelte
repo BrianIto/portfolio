@@ -11,35 +11,29 @@
 	import { page } from '$app/state';
 	import { scaleLinear } from 'd3';
 
-	let loaded = $state(false);
-
 	let scrollY = $state(0);
 	let size = $state(0);
 	let scale = $derived(scaleLinear().domain([0, size]).range([1, 100]));
-	let percentage = $derived(size > 1500 ? scale(scrollY).toFixed(0) : 1);
+	let percentage = $derived(size > 1500 ? +scale(scrollY).toFixed(0) : 1);
 
 	/** @type {Record<string, HTMLElement | null>} } */
 
 	let options = { hero: null, skills: null, about: null, contact: null };
-
-	/** @type { import('smooth-scrollbar').Scrollbar | null} */
+	/**@type{import('smooth-scrollbar').default | null} */
 	let scrollbar = $state(null);
 
 	$effect(() => {
 		let pg = page.url.hash.replace('#', '');
-		if (pg) {
-			scrollbar.scrollIntoView(options[pg]);
-		} else {
-			scrollbar.scrollIntoView(options['hero']);
+		if (pg && options[pg]) {
+			scrollbar?.scrollIntoView(options[pg]);
+		} else if (options['hero']) {
+			scrollbar?.scrollIntoView(options['hero']);
 		}
 	});
 </script>
 
-<PreloadSection
-	onfinish={() => {
-		loaded = true;
-	}}
-/>
+<svelte:head><title>Brian Ito - Portfolio</title></svelte:head>
+<PreloadSection />
 <Cursor />
 <Header
 	{percentage}

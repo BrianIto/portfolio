@@ -4,7 +4,7 @@
 	import Frameworks from '../../../molecules/Frameworks/Frameworks.svelte';
 </script>
 
-<article class="flex flex-col gap-9 ">
+<article class="flex flex-col gap-9">
 	<Heading2 class="px-6 lg:px-0">One Dev to Rule Them All*:<br /> I Got you Covered</Heading2>
 	<div class="grid lg:grid-cols-2">
 		<section class="flex flex-col items-start justify-start gap-5 px-6 lg:px-0">
@@ -17,7 +17,7 @@
 				<li>Check this website Storybook for a view of the components and docs I made.</li>
 				<li>Check this website GitHub Repository to check if the code is well-written.</li>
 			</ul>
-			<Button class="my-5 px-12" label="See more"></Button>
+			<a href="/posts/frontend"><Button class="my-5 px-12" label="See more"></Button></a>
 			<p class="!text-sm font-light opacity-70">
 				* This is a Lord of the Rings reference to the One Ring: ”One Ring to rule them all, One
 				Ring to find them, One Ring to bring them all and in the darkness bind them.” by J. R. R.
@@ -26,7 +26,7 @@
 		</section>
 
 		<section
-			class="relative top-6 flex w-screen lg:w-auto flex-col items-start justify-start overflow-hidden lg:-top-16 lg:pl-32"
+			class="relative top-6 flex w-screen flex-col items-start justify-start overflow-hidden lg:-top-16 lg:w-auto lg:pl-32"
 		>
 			<div class="mx-auto">
 				<Frameworks />

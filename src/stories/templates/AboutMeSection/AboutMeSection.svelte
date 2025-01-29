@@ -4,20 +4,20 @@
 	import Family from '../../assets/family.webp';
 	import AnimationTranslation from '../../molecules/AnimationTranslation/AnimationTranslation.svelte';
 
-	let { el = $bindable(''), ...props } = $props();
+	let { el = $bindable() } = $props();
 </script>
 
 <article bind:this={el} class="pt-24">
-	<div class="relative lg:top-[60vh] lg:-mt-[80vh] lg:h-[80vh] w-full overflow-hidden">
+	<div class="relative w-full overflow-hidden lg:top-[60vh] lg:-mt-[80vh] lg:h-[80vh]">
 		<AnimationTranslation />
 	</div>
 	<Title title="Who are you?" side="right" />
-	<div class="lg:grid lg:grid-cols-2 flex flex-col-reverse px-6 lg:px-16">
-		<div class="relative lg:-top-32 max-h-[32rem] lg:pr-24">
+	<div class="flex flex-col-reverse px-6 lg:grid lg:grid-cols-2 lg:px-16">
+		<div class="relative max-h-[32rem] lg:-top-32 lg:pr-24">
 			<img
 				src={Family}
 				alt="Our developer family"
-				class="relative lg:-top-28 w-full scale-75 overflow-hidden rounded-full object-cover"
+				class="relative w-full scale-75 overflow-hidden rounded-full object-cover lg:-top-28"
 			/>
 		</div>
 		<div class="mt-10 lg:max-h-[32rem]">

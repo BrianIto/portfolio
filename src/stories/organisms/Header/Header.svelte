@@ -5,7 +5,7 @@
 
 	/** @typedef {object} Props
 	 * @property { number } percentage - the percentage of the scroll
-	 * @property {menuOptions: {title: string, href: string}[]} menuOptions - The options for the menu
+	 * @property {{title: string, href: string}[]} menuOptions - The options for the menu
 	 */
 
 	/** @type { Props} */

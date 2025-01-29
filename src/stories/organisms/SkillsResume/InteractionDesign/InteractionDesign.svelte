@@ -1,5 +1,6 @@
 <script>
 	import Button from '../../../atoms/Button/Button.svelte';
+	import Label from '../../../atoms/Label/Label.svelte';
 	import Heading2 from '../../../atoms/Typography/Heading2/Heading2.svelte';
 	import InteractPixels from '../../../molecules/InteractPixels/InteractPixels.svelte';
 </script>
@@ -17,10 +18,13 @@
 				Interacting with people makes they stay longer on a website because it fires out curiosity.
 				Who doesn't love well detailed experiences?
 			</p>
-			<Button class="my-5 px-12" label="See more"></Button>
+			<div>
+				<Button disabled class="my-5 opacity-50 mb-2 px-12" label="See more"></Button>
+				<Label class="!m-0 !text-sm opacity-60">*Work in Progress. Coming soon!</Label>
+			</div>
 		</section>
 
-		<section class="relative lg:-top-16 top-6 flex flex-col items-start justify-start lg:pl-32">
+		<section class="relative top-6 flex flex-col items-start justify-start lg:-top-16 lg:pl-32">
 			<div class="m-auto">
 				<InteractPixels />
 			</div>

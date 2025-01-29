@@ -6,6 +6,7 @@
 	import Nest from '../../../assets/nest.svg';
 	import Mysql from '../../../assets/mysql.svg';
 	import Typescript from '../../../assets/typescript.webp';
+	import Label from '../../../atoms/Label/Label.svelte';
 </script>
 
 <article class=" flex flex-col gap-9">
@@ -27,7 +28,10 @@
 					but I can do that in other script-made languages like JavaScript/Typescript and Python.
 				</li>
 			</ul>
-			<Button class="my-5 px-12" label="See more"></Button>
+			<div>
+				<Button disabled class="my-5 opacity-50 mb-2 px-12" label="See more"></Button>
+				<Label class="!m-0 !text-sm opacity-60">*Work in Progress. Coming soon!</Label>
+			</div>
 		</section>
 
 		<section class="relative lg:-top-20 flex w-full flex-col items-start justify-start lg:pl-16">

@@ -14,7 +14,7 @@
 <svelte:head>
 	<title>{title} - Brian Portfolio</title>
 </svelte:head>
-<Title side="center" {title}></Title>
+<Title id="main" side="center" {title}></Title>
 <p class="!mt-16 px-6">
 	<b>As my main role, frontend development is a my passion.</b> They can be done using what we call frameworks
 	and with native code (HTML, CSS and Javascript). Those frameworks are dominating market because they
@@ -22,7 +22,7 @@
 	fit architectures with ease.
 </p>
 <p class="px-6">Below I will list each of the frameworks I am proficient with.</p>
-<Heading2 class="mx-auto my-4 w-full max-w-5xl px-6">REACT AND NEXT.JS</Heading2>
+<Heading2 id="react" class="mx-auto pt-8 py-4 w-full max-w-5xl px-6">REACT AND NEXT.JS</Heading2>
 <div class="mx-auto grid max-w-5xl px-6 md:grid-cols-6">
 	<div class="col-span-4">
 		<p>
@@ -84,7 +84,7 @@ const Component = () => { 
 	></BlockCode>
 </div>
 
-<Heading2 class="mx-auto my-4 w-full max-w-5xl px-6">Angular</Heading2>
+<Heading2 id="angular" class="mx-auto pt-8 py-4 w-full max-w-5xl px-6">Angular</Heading2>
 <div class="mx-auto grid w-full max-w-5xl items-center px-6 md:grid-cols-6 md:gap-10">
 	<div class="col-span-4">
 		<p>
@@ -105,7 +105,7 @@ const Component = () => { 
 	</div>
 </div>
 
-<Heading2 class="mx-auto my-4 w-full max-w-5xl px-6">Svelte + Kit</Heading2>
+<Heading2 id="svelte" class="mx-auto my-4 w-full max-w-5xl px-6">Svelte + Kit</Heading2>
 <div class="mx-auto grid w-full max-w-5xl px-6 md:grid-cols-6 md:gap-10">
 	<div class="col-span-4">
 		<p>
@@ -146,7 +146,7 @@ const Component = () => { 
 	></BlockCode>
 </div>
 
-<Heading2 class="mx-auto my-4 w-full max-w-5xl px-6">Storybook</Heading2>
+<Heading2 id="storybook" class="mx-auto my-4 w-full max-w-5xl px-6">Storybook</Heading2>
 <div class="mx-auto grid w-full max-w-5xl items-center px-6 md:grid-cols-6 md:gap-10">
 	<div class="col-span-4">
 		<p>
@@ -163,7 +163,7 @@ const Component = () => { 
 		<img src={Storybook} alt="Storybook Logo" class="w-full min-w-44" />
 	</div>
 </div>
-<Heading2 class="mx-auto my-4 w-full max-w-5xl px-6">Considerations</Heading2>
+<Heading2 id="considerations" class="mx-auto my-4 w-full max-w-5xl px-6">Considerations</Heading2>
 <p class="my-12 px-6 pb-28">
 	I really hope those frontend skills match your company (or yourself) pleased. Don't hesitate to
 	contact me through any channel (I will answer). We can work together to build great stuff.

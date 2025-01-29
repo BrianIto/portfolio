@@ -17,7 +17,7 @@
 	});
 
 	/** @typedef {object} Props
-	 * @property { ContactFormInterface.ContactFormType} data - the preloaded data for casting
+	 * @property { ContactFormInterface.ContactFormType=} data - the preloaded data for casting
 	 * @property { (data : ContactFormInterface.ContactFormType) => void } onSubmit - the submit data
 	 */
 

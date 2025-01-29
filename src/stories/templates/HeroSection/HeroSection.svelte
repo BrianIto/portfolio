@@ -3,7 +3,7 @@
 	import AnimationTranslation from '../../molecules/AnimationTranslation/AnimationTranslation.svelte';
 	import HeroImage from '../../assets/hero-image.webp';
 
-	let { el = $bindable(), ...props} = $props();
+	let { el = $bindable()} = $props();
 </script>
 
 <main bind:this={el} class="relative flex min-h-[100vh] max-w-[100vw] justify-center text-center lg:text-left xl:justify-start items-center overflow-x-hidden">

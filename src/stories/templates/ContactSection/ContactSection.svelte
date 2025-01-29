@@ -5,14 +5,14 @@
 	import X from '$lib/icons/X.svelte';
 	import Instagram from '$lib/icons/Instagram.svelte';
 
-	let { el = $bindable(''), ...props } = $props();
+	let { el = $bindable() } = $props();
 </script>
 
 <main bind:this={el} class="py-20">
 	<Title title="How to reach you?" side="left" />
-	<article class="lg:mx-16 mx-6 my-16 grid lg:grid-cols-2 gap-16">
+	<article class="mx-6 my-16 grid gap-16 lg:mx-16 lg:grid-cols-2">
 		<section>
-			<Heading2 class="lg:mr-24 mb-6">
+			<Heading2 class="mb-6 lg:mr-24">
 				WANT TO TURN IDEAS INTO CODE, SOLVE A BIG PROBLEM OR BUILD THE ALL-STARS TEAM? I GOT YOUR
 				BACK.
 			</Heading2>
@@ -30,7 +30,7 @@
 				little about you. If you want to know more about me and my work, please connect through my
 				social media too.
 			</p>
-			<div class="mt-10 flex justify-center lg:justify-start cursor-pointer gap-8">
+			<div class="mt-10 flex cursor-pointer justify-center gap-8 lg:justify-start">
 				<a href="https://x.com/Droga_EhOBrian" target="_blank">
 					<X class="h-8 w-8 text-white opacity-50 duration-300 hover:opacity-100" />
 				</a>

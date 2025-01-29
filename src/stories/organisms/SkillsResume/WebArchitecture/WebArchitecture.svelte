@@ -4,6 +4,7 @@
 	import Heading2 from '../../../atoms/Typography/Heading2/Heading2.svelte';
 	import BlockCode from '../../../molecules/BlockCode/BlockCode.svelte';
 	import Qa from '$lib/icons/QA.svelte';
+	import Label from '../../../atoms/Label/Label.svelte';
 </script>
 
 <article class="flex flex-col gap-9">
@@ -29,11 +30,14 @@
 					create good brand-based design.
 				</li>
 			</ul>
-			<Button class="my-5 px-12" label="See more"></Button>
+			<div>
+				<Button disabled class="my-5 opacity-50 mb-2 px-12" label="See more"></Button>
+				<Label class="!m-0 !text-sm opacity-60">*Work in Progress. Coming soon!</Label>
+			</div>
 		</section>
 
-		<section class="relative flex flex-col items-start justify-start max-w-full overflow-hidden lg:pl-16">
-			<div class="m-auto">
+		<section class="relative flex flex-col items-start justify-start max-w-full lg:overflow-visible overflow-hidden lg:pl-16">
+			<div class="m-auto ">
 				<div class="w-full relative lg:-top-16 top-6">
 					<Qa class="top-3 relative lg:w-1/2 w-1/2" />
 					<div class="lg:w-56 lg:h-24 w-44 h-16 text-center flex items-center justify-center text-white border rounded-lg opacity-50 border-dashed relative -top-3 -z-10 left-60 -mt-24">
