@@ -1,7 +1,7 @@
 <script>
 	/** @typedef {object} Props
 	 *@property { string} title - The title to be shown
-	 * @property { ("right" | "left") = } side - the side of the element. Could be fixed to the `left` or to the `right`
+	 * @property { ("right" | "left" | 'center') = } side - the side of the element. Could be fixed to the `left` or to the `right`
 	 */
 
 	/** @type {Props} */
@@ -10,12 +10,14 @@
 
 <div
 	class={[
-		'flex w-1/2 flex-col',
+		'flex w-full text-center w-full lg:w-1/2 flex-col',
 		{ 'w-1/2 items-end': side === 'left' },
-		{ 'ml-[50%] items-start': side === 'right' }
+		{ 'lg:ml-[50%] items-center lg:items-start': side === 'right' },
+	{"mx-auto lg:w-auto": side === "center"}
 	]}
 >
-	<h1 class={['w-1/2 text-5xl font-bold uppercase text-white', { 'text-right': side === 'left' }]}>
+	<h1 class={['lg:w-1/2 w-full text-center px-12 lg:px-0 text-3xl lg:text-5xl font-bold uppercase text-white', 
+		{ 'lg:text-right': side === 'left', 'text-center lg:w-auto lg:px-8': side === "center" }]}>
 		{title}
 	</h1>
 	<div class="relative mt-4 h-1.5 w-full bg-[#16bf78]"></div>

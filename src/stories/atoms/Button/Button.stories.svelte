@@ -1,7 +1,7 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import Button from './Button.svelte';
-
+	import { within, expect, fn, userEvent } from '@storybook/test';
 	/**
 	 * Button is a main component that perform actions. Use it carefully they call a lot of attention.
 	 *
@@ -15,4 +15,12 @@
 	});
 </script>
 
-<Story name="Default" args={{ label: 'A plain button' }} />
+<Story
+	name="Default"
+	args={{ label: 'A plain button', onclick: fn() }}
+	play={async ({ canvasElement, args }) => {
+		const canvas = within(canvasElement);
+		let button = await canvas.findByRole('button');
+		userEvent.click(button);
+	}}
+/>

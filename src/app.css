@@ -9,18 +9,22 @@ body {
 	background-color: #222121;
 }
 
-article p {
+article p:not(.label):not(.hint) {
 	font-smooth: always;
-	@apply font-serif text-xl font-normal text-[#C1C1C1];
+	@apply font-serif lg:text-xl text-base font-normal text-[#C1C1C1];
 	b {
 		@apply font-bold;
 	}
 }
 
 article ul {
-	@apply list-disc pl-12 font-serif text-xl font-normal text-[#C1C1C1];
+	@apply list-disc pl-12 font-serif lg:text-xl text-base font-normal text-[#C1C1C1];
 }
 
 a {
 	@apply text-blue-300 hover:text-blue-400;
+}
+
+pre {
+	@apply text-xs lg:text-base;
 }

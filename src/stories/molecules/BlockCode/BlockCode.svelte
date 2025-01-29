@@ -12,29 +12,39 @@
 	 * @property { string= } filename - the filename (only if the header is on!)
 	 * @property { boolean= } hasHeader - if the Header should be shown
 	 * @property { boolean= } number - if the numbers should be shown
+	 * @property { "xs" | "sm" | "md" } size - the size of the font
 	 */
 
 	/** @type { Props } */
-	const { language = typescript, code, hasHeader = false, number = false, filename } = $props();
+	const {
+		language = typescript,
+		code,
+		hasHeader = false,
+		number = false,
+		filename,
+		size = 'md'
+	} = $props();
 </script>
 
 <svelte:head>
 	{@html Github}
 </svelte:head>
 
-<div class="rounded-lg bg-[#22272e] p-1">
+<div class={['rounded-lg bg-[#22272e] p-1 scale-90 md:scale-100']}>
 	{#if hasHeader}
 		<div class="flex items-center gap-3 p-3">
 			<div class="relative h-3 w-3 rounded-full bg-[#FC4E4C]"></div>
 			<div class="relative h-3 w-3 rounded-full bg-[#FEB53D]"></div>
 			<div class="relative h-3 w-3 rounded-full bg-[#35C144]"></div>
 			{#if filename}
-				<p class="ml-4 border-x font-sans text-base border-blue-400 px-4 text-blue-300 opacity-50">{filename}</p>
+				<p class="ml-4 border-x border-blue-400 px-4 !font-sans !text-base text-blue-300 opacity-50">
+					{filename}
+				</p>
 			{/if}
 		</div>
 	{/if}
 	{#if number}
-		<Highlight {language} {code} let:highlighted>
+		<Highlight {language} {code} let:highlighted style="text-size: 0.75rem">
 			<LineNumbers
 				{highlighted}
 				--line-number-color="rgba(255, 255, 255, 0.3)"

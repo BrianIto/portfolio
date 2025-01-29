@@ -1,13 +1,19 @@
 <script>
 	import DynamicIsland from '../../molecules/DynamicIsland/DynamicIsland.svelte';
 	import { fly } from 'svelte/transition';
-
 	let open = $state(false);
-	
+
+	/** @typedef {object} Props
+	 * @property { number } percentage - the percentage of the scroll
+	 * @property {menuOptions: {title: string, href: string}[]} menuOptions - The options for the menu
+	 */
+
+	/** @type { Props} */
+	let { percentage, menuOptions = [] } = $props();
 </script>
 
-<div class="fixed z-50 w-full flex justify-center p-8">
-	<DynamicIsland bind:open title={'Index'} percentage={10} />
+<div class="fixed z-50 flex w-full justify-center p-8">
+	<DynamicIsland {menuOptions} bind:open title={'Index'} {percentage} />
 </div>
 {#if open}
 	<button

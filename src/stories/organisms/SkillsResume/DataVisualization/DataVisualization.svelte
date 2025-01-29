@@ -6,7 +6,7 @@
 
 <article class=" flex flex-col gap-9">
 	<Heading2>Complex Data doesn't <br /> need to be complicated</Heading2>
-	<div class="grid grid-cols-2">
+	<div class="grid lg:grid-cols-2">
 		<section class="flex flex-col items-start justify-start gap-5">
 			<p>
 				Showing data in a readable manner and proper to insights is more than displaying a Bar Chart
@@ -26,7 +26,7 @@
 			</p>
 		</section>
 
-		<section class="relative -top-16 flex w-full flex-col items-start justify-start pl-16">
+		<section class="relative lg:-top-16 top-6 flex w-full flex-col items-start justify-start lg:pl-16">
 			<NodeChart />
 			<p class="mt-3 w-full text-center text-sm font-light">
 				Try dragging a node to check interaction and <a>see the dataset</a>

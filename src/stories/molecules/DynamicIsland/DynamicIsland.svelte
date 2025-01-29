@@ -9,6 +9,7 @@
 	 * @property {string} title - The title to be shown in the dynamic island
 	 * @property { boolean= } open - **Bindable!** The open controller
 	 * @property {string=} testId - The data TestID of the element for Testing Library
+	 * @property {{title: string, href: string}[]} menuOptions - The options for the menu
 	 * @property {string=} menuTestId - The data TestID of the Menu element for Testing Library
 	 * @property {((open: boolean) => void)=} onopen - On open Event Handler
 	 */
@@ -18,19 +19,11 @@
 		percentage = 15,
 		title = 'Dynamic Island',
 		testId = 'dynamic-island',
+		menuOptions = [],
 		open = $bindable(false),
 		menuTestId = 'menu-dynamic-island',
 		onopen = () => {}
 	} = $props();
-
-	let menuOptions = $state([
-		{ title: 'option 1' },
-		{ title: 'option 2' },
-		{ title: 'option 3' },
-		{ title: 'option 1' },
-		{ title: 'option 2' },
-		{ title: 'option 3' }
-	]);
 
 	// Create a tweened store for the width of the header
 	let headerWidth = new Tween(200, {
@@ -67,15 +60,17 @@
 	</div>
 
 	{#if open}
-		<div transition:slide data-testid={menuTestId} class="mt-2 w-72 rounded-lg p-2 ">
+		<div transition:slide data-testid={menuTestId} class="mt-2 w-72 rounded-lg p-2">
 			<ul class="px-2">
 				{#each menuOptions as menuOption, i}
-					<li
-						transition:fly|global={{ x: 5, delay: 100 * i }}
-						class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 font-sans text-sm opacity-50 duration-300 hover:opacity-100"
-					>
-						{menuOption.title}
-					</li>
+					<a href={menuOption.href} class="text-white hover:text-white duration-300 opacity-50 hover:opacity-100">
+						<li
+							transition:fly|global={{ x: 5, delay: 100 * i }}
+							class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 font-sans text-sm "
+						>
+							{menuOption.title}
+						</li>
+					</a>
 				{/each}
 			</ul>
 		</div>

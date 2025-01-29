@@ -10,7 +10,7 @@
 
 <article class=" flex flex-col gap-9">
 	<Heading2>HEAVY-DUTY, FAST AND LIGHTWEIGHT<br /> APPLICATIONS NEEDS TO BACKED.</Heading2>
-	<div class="grid grid-cols-2">
+	<div class="grid lg:grid-cols-2">
 		<section class="flex flex-col items-start justify-start gap-5">
 			<p>
 				A beautiful web app or website should work properly. In this case, <b>properly</b> means:
@@ -30,7 +30,7 @@
 			<Button class="my-5 px-12" label="See more"></Button>
 		</section>
 
-		<section class="relative -top-20 flex w-full flex-col items-start justify-start pl-16">
+		<section class="relative lg:-top-20 flex w-full flex-col items-start justify-start lg:pl-16">
 			<img src={Mysql} alt="MySQL Database Logo" />
 			<img src={Redis} alt="Redis logo" class="relative left-64 top-32 z-10 w-80 scale-105" />
 			<img

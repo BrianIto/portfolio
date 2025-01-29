@@ -32,19 +32,21 @@
 	});
 </script>
 
-<img class="relative top-32" bind:this={reactEl} src={React} alt="React logo" />
-<img class="relative -top-24 -left-12 -z-10 -mt-32" src={NextJS} alt="Nextjs logo" />
-<img
-	bind:this={svelteEl}
-	class="relative -top-36 left-28 -z-20 -mt-40"
-	src={Svelte}
-	alt="Svelte logo"
-/>
+<div class="xl:w-auto relative max-w-96">
+	<img class="relative top-32" bind:this={reactEl} src={React} alt="React logo" />
+	<img class="relative -left-12 -top-24 -z-10 -mt-32" src={NextJS} alt="Nextjs logo" />
+	<img
+		bind:this={svelteEl}
+		class="relative -top-36 left-28 -z-20 -mt-40"
+		src={Svelte}
+		alt="Svelte logo"
+	/>
 
-<img class="relative -top-36 left-52 -z-10 -mt-32" src={Angular} alt="Angular logo" />
-<img class="relative -top-8 left-40 -z-10 -mt-32" src={Typescript} alt="TypeScript logo" />
-<img
-	class="relative left-60 -z-10 -mt-32 translate-x-4 -translate-y-3 scale-90"
-	src={Storybook}
-	alt="Storybook logo"
-/>
+	<img class="relative -top-36 left-52 -z-10 -mt-32" src={Angular} alt="Angular logo" />
+	<img class="relative -top-8 left-40 -z-10 -mt-32" src={Typescript} alt="TypeScript logo" />
+	<img
+		class="relative left-60 -z-10 -mt-32 -translate-y-3 translate-x-4 scale-90"
+		src={Storybook}
+		alt="Storybook logo"
+	/>
+</div>

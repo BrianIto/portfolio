@@ -6,7 +6,7 @@
 
 <article class="flex flex-col gap-9">
 	<Heading2>BEYOND BROWSER SLIDES PRESENTATIONS:<br /> PEOPLE LOVES TO INTERACT</Heading2>
-	<div class="grid grid-cols-2">
+	<div class="grid lg:grid-cols-2">
 		<section class="flex flex-col items-start justify-start gap-5">
 			<p>
 				A website without interaction is a PowerPoint presentation on a browser. We as humans want
@@ -20,7 +20,7 @@
 			<Button class="my-5 px-12" label="See more"></Button>
 		</section>
 
-		<section class="relative -top-16 flex flex-col items-start justify-start pl-32">
+		<section class="relative lg:-top-16 top-6 flex flex-col items-start justify-start lg:pl-32">
 			<div class="m-auto">
 				<InteractPixels />
 			</div>

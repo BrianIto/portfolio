@@ -34,7 +34,7 @@ const { matrix, onHoverLetter, isLetterHovered, isFinished } = useInteractPixels
 					onHoverLetter([i, j]);
 				}}
 				class={[
-					'dot relative h-3 w-3 rounded-sm',
+					'dot relative lg:h-3 lg:w-3 w-2 h-2 rounded-sm',
 					{
 						'!bg-green-300': isLetterHovered([i, j]),
 						'bg-zinc-700 hover:bg-zinc-400': !isLetterHovered([i, j]) && !isFinished(),

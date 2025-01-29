@@ -1,6 +1,16 @@
 <script>
-let props = $props();
+	let props = $props();
 </script>
-<svg {...props} fill="currentColor" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+
+<svg {...props} fill="currentColor" viewBox="0 0 24 24">
+	<!-- Make the chevron more bold -->
+	<path
+		fill-rule="evenodd"
+		d="M7 10L12 15L17 10"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+	/>
 </svg>
