@@ -10,7 +10,7 @@
 </script>
 
 <p
-	class={[{ '!text-lg': size === 'normal' }, ' max-w-96 font-serif text-zinc-200 duration-300 label', props.class]}
+	class={[{ '!text-lg': size === 'normal' }, ' max-w-72 font-serif text-zinc-200 duration-300 label', props.class]}
 >
 	{@render children()}
 </p>
