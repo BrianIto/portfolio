@@ -18,6 +18,7 @@
 
 	<textarea
 		bind:value
+		{...props}
 		class="mt-1 min-h-32 w-full rounded-lg bg-[#353535] px-3 py-1.5 font-serif text-zinc-300 outline-none duration-200 placeholder:text-zinc-500 focus:bg-zinc-700"
 		{placeholder}
 	></textarea>

@@ -28,6 +28,7 @@
 <div class="flex flex-col lg:flex-row w-full items-start gap-2">
 	<InputText
 		required={form.validators['preferredName'].includes('required')}
+		name="preferredName"
 		label="Preferred Name"
 		icon={Person}
 		showErrorWhenDirty={true}
@@ -40,6 +41,7 @@
 		required={form.validators['lastName'].includes('required')}
 		label="Last Name"
 		icon={Person}
+		name="lastName"
 		showErrorWhenDirty
 		error={form.errors?.['lastName']?.[0] ?? ''}
 		placeholder="For specification"
@@ -51,6 +53,7 @@
 	required={form.validators['email'].includes('required')}
 	label="E-mail"
 	icon={Email}
+	name="email"
 	showErrorWhenDirty
 	error={form.errors?.['email']?.[0] ?? ''}
 	placeholder="Tell me where I can answer you"
@@ -62,6 +65,7 @@
 	label="Phone"
 	showErrorWhenDirty
 	phone
+	name="phone"
 	bind:phoneRegion={form.form.region}
 	hint="Select your country code and then fill the phone."
 	icon={WhatsApp}
@@ -72,6 +76,7 @@
 <TextArea
 	label="Message"
 	icon={Email}
+	name="message"
 	bind:value={form.form.message}
 	placeholder="Spammers are everywhere. Unfortunetaly we need to protect e-mails with these kind of forms to prevent spammers and hijackers."
 ></TextArea>
@@ -83,6 +88,7 @@
 		onclick={() => {
 			onSubmit(form.form);
 		}}
+		disabled={form.errors}
 		label="Send it"
 	/>
 </div>

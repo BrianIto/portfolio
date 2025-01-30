@@ -9,6 +9,7 @@
 	import PreloadSection from '../stories/templates/Preload/PreloadSection.svelte';
 	import SkillsSection from '../stories/templates/SkillsSection/SkillsSection.svelte';
 	import { page } from '$app/state';
+	import { enhance } from '$app/forms';
 	import { scaleLinear } from 'd3';
 
 	let scrollY = $state(0);
@@ -30,6 +31,8 @@
 			scrollbar?.scrollIntoView(options['hero']);
 		}
 	});
+
+	$inspect(page.form)
 </script>
 
 <svelte:head><title>Brian Ito - Portfolio</title></svelte:head>
@@ -48,6 +51,8 @@
 	<HeroSection bind:el={options['hero']} />
 	<SkillsSection bind:el={options['skills']} />
 	<AboutMeSection bind:el={options['about']} />
-	<ContactSection bind:el={options['contact']} />
+	<form use:enhance method="POST" action="?/contact">
+		<ContactSection success={page.form?.success} oncontact={() => {}} bind:el={options['contact']} />
+	</form>
 	<Footer />
 </SmoothScroll>
