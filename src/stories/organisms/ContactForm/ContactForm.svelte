@@ -19,10 +19,11 @@
 	/** @typedef {object} Props
 	 * @property { ContactFormInterface.ContactFormType=} data - the preloaded data for casting
 	 * @property { (data : ContactFormInterface.ContactFormType) => void } onSubmit - the submit data
+	 * @property { boolean } loading - loading state of the action
 	 */
 
 	/** @type { Props } */
-	const { onSubmit } = $props();
+	const { onSubmit, loading = false } = $props();
 </script>
 
 <div class="flex flex-col lg:flex-row w-full items-start gap-2">
@@ -88,7 +89,7 @@
 		onclick={() => {
 			onSubmit(form.form);
 		}}
-		disabled={form.errors}
-		label="Send it"
+		disabled={form.errors || loading}
+		label={loading ? "Just a second..." : "Send it"}
 	/>
 </div>

@@ -5,7 +5,7 @@
 	import X from '$lib/icons/X.svelte';
 	import Instagram from '$lib/icons/Instagram.svelte';
 
-	let { el = $bindable(), oncontact, success = false } = $props();
+	let { el = $bindable(), oncontact, success = false, loading = false } = $props();
 </script>
 
 <main bind:this={el} class="py-20">
@@ -45,7 +45,7 @@
 					<Heading2 class="my-6 ">Well Done!</Heading2>
 					<p class="!text-base mb-6">We will get in touch really soon. Thanks for your interest! &nbsp; 🥳</p>
 				{:else}
-					<ContactForm onSubmit={oncontact} />
+					<ContactForm {loading} onSubmit={oncontact} />
 				{/if}
 			</div>
 		</section>

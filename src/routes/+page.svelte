@@ -32,7 +32,9 @@
 		}
 	});
 
-	$inspect(page.form)
+	$inspect(page.form);
+
+	let loadingContact = $state(false);
 </script>
 
 <svelte:head><title>Brian Ito - Portfolio</title></svelte:head>
@@ -51,8 +53,23 @@
 	<HeroSection bind:el={options['hero']} />
 	<SkillsSection bind:el={options['skills']} />
 	<AboutMeSection bind:el={options['about']} />
-	<form use:enhance method="POST" action="?/contact">
-		<ContactSection success={page.form?.success} oncontact={() => {}} bind:el={options['contact']} />
+	<form
+		use:enhance={() => {
+			loadingContact = true;
+			return ({ update }) => {
+				loadingContact = false;
+				update();
+			};
+		}}
+		method="POST"
+		action="?/contact"
+	>
+		<ContactSection
+			loading={loadingContact}
+			success={page.form?.success}
+			oncontact={() => {}}
+			bind:el={options['contact']}
+		/>
 	</form>
 	<Footer />
 </SmoothScroll>
