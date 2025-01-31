@@ -48,7 +48,7 @@
 			<div transition:slide|global>
 				<p
 					class={[
-						'py-1 font-serif hint text-sm  first-letter:capitalize',
+						'hint py-1 font-serif text-sm  first-letter:capitalize',
 						{ 'text-red-400': !!isError && shouldShowError },
 						{ 'text-zinc-500': !isError || !shouldShowError }
 					]}
@@ -123,7 +123,7 @@
 	{#if label}
 		<Label
 			class={[
-				'relative -bottom-8 -z-10 origin-top-left group-[.phone]:-bottom-5 group-[.phone]:left-24 group-[.error]:text-red-400 peer-focus:bottom-0 peer-focus:translate-y-3 peer-focus:scale-75 group-[.phone]:peer-focus:bottom-3 group-[.phone]:peer-focus:left-0 peer-disabled:opacity-50',
+				'relative -bottom-8 -z-10 w-fit !max-w-auto origin-top-left group-[.phone]:-bottom-5 group-[.phone]:left-24 group-[.error]:text-red-400 peer-focus:bottom-0 peer-focus:translate-y-3 peer-focus:scale-75 group-[.phone]:peer-focus:bottom-3 group-[.phone]:peer-focus:left-0 peer-disabled:opacity-50',
 				{
 					'!bottom-0 !translate-y-3 !scale-75 group-[.phone]:!bottom-3 group-[.phone]:!left-0 group-[.icon]:-translate-x-8 ':
 						!!value
