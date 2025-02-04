@@ -14,7 +14,8 @@
     "test:unit": "vitest",
     "test": "npm run test:unit -- --run",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_6fd18c7e8551929"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
