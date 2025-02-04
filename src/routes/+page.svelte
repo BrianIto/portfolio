@@ -44,9 +44,9 @@
 	{percentage}
 	menuOptions={[
 		{ title: 'Initial Page', href: '#' },
-		{ title: 'What do you know?', href: '#skills' },
-		{ title: 'Who you are?', href: '#about' },
-		{ title: 'How to reach you?', href: '#contact' }
+		{ title: 'What do I know?', href: '#skills' },
+		{ title: 'Who am I?', href: '#about' },
+		{ title: 'How to reach me?', href: '#contact' }
 	]}
 />
 <SmoothScroll bind:scrollY bind:size bind:scrollbar damping={0.05}>

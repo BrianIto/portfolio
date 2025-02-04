@@ -11,7 +11,7 @@
 	<div class="relative w-full overflow-hidden lg:top-[60vh] lg:-mt-[80vh] lg:h-[80vh]">
 		<AnimationTranslation />
 	</div>
-	<Title title="Who are you?" side="right" />
+	<Title title="Who am I?" side="right" />
 	<div class="flex flex-col-reverse px-6 lg:grid lg:grid-cols-2 lg:px-16">
 		<div class="relative max-h-[32rem] lg:-top-32 lg:pr-24">
 			<img

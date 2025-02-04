@@ -9,7 +9,7 @@
 </script>
 
 <main bind:this={el} class="py-20">
-	<Title title="How to reach you?" side="left" />
+	<Title title="How to reach me?" side="left" />
 	<article class="mx-6 my-16 grid gap-16 lg:mx-16 lg:grid-cols-2 items-center">
 		<section>
 			<Heading2 class="mb-6 lg:mr-24">

@@ -13,7 +13,7 @@
 </script>
 
 <main bind:this={el} class="pt-16">
-	<Title title="What do you know?" side="left" />
+	<Title title="What do I know?" side="left" />
 	<section id="skills" class="my-16 flex w-full flex-col items-center">
 		<div>
 			<Tabs
