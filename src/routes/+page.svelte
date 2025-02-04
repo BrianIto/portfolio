@@ -37,7 +37,23 @@
 	let loadingContact = $state(false);
 </script>
 
-<svelte:head><title>Brian Ito - Portfolio</title></svelte:head>
+<svelte:head
+	><title>Brian Ito - Portfolio</title><meta name="author" content="Brian Ito" />
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-2PBLVVRXGK"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-2PBLVVRXGK');
+	</script>
+	<meta
+		name="description"
+		content="Web Developer with 8 years experience based in Manaus, Brazil. Ready to create amazing websites for you."
+	/></svelte:head
+>
 <PreloadSection />
 <Cursor />
 <Header

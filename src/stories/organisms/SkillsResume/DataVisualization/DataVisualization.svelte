@@ -14,8 +14,11 @@
 				give us a vision of the world in a understandable way, and there's nothing worst than a
 				chart that doesn't mean nothing.*
 			</p>
-			<p>Having great interactive charts, displayed with simple and creative way are my passion. Making them not simply
-			an SVG or PNG on a screen but to transmit information and be filtered, interacted and meaninful.</p>
+			<p>
+				Having great interactive charts, displayed with simple and creative way are my passion.
+				Making them not simply an SVG or PNG on a screen but to transmit information and be
+				filtered, interacted and meaninful.
+			</p>
 			<a href="/posts/dataviz"><Button class="my-5 px-12" label="See more"></Button></a>
 
 			<p class="!text-sm font-light opacity-70">
@@ -26,10 +29,12 @@
 			</p>
 		</section>
 
-		<section class="relative lg:-top-16 top-6 flex w-full flex-col items-start justify-start lg:pl-16">
+		<section
+			class="relative top-6 flex w-full flex-col items-start justify-start lg:-top-16 lg:pl-16"
+		>
 			<NodeChart />
 			<p class="mt-3 w-full text-center !text-sm font-light">
-				Try dragging a node to check interaction and <a>see the dataset</a>
+				Try dragging a node to check interaction and <a href="/data.json">see the dataset</a>
 			</p>
 		</section>
 	</div>
