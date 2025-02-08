@@ -17,4 +17,4 @@
 	});
 </script>
 
-<Story name="Default" args={{ onfinish: fn() }} />
+<Story name="Default" args={{ onfinish: fn(), delay: 0.5 }} />

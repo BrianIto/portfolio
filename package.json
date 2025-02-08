@@ -56,6 +56,7 @@
   },
   "dependencies": {
     "@inlang/paraglide-sveltekit": "^0.15.5",
+    "@lottielab/lottie-player": "^1.1.3",
     "d3": "^7.9.0",
     "gsap": "^3.12.7",
     "libphonenumber-js": "^1.11.18",

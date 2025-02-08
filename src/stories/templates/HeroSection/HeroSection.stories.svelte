@@ -16,4 +16,4 @@
 	});
 </script>
 
-<Story name="Default" args={{}} />
+<Story name="Default" args={{ delay: 0.5}} />

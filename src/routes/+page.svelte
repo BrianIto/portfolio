@@ -13,6 +13,7 @@
 	import { scaleLinear } from 'd3';
 
 	let scrollY = $state(0);
+
 	let size = $state(0);
 	let scale = $derived(scaleLinear().domain([0, size]).range([1, 100]));
 	let percentage = $derived(size > 1500 ? +scale(scrollY).toFixed(0) : 1);
@@ -22,7 +23,6 @@
 	let options = { hero: null, skills: null, about: null, contact: null };
 	/**@type{import('smooth-scrollbar').default | null} */
 	let scrollbar = $state(null);
-
 	$effect(() => {
 		let pg = page.url.hash.replace('#', '');
 		if (pg && options[pg]) {
@@ -65,6 +65,7 @@
 		{ title: 'How to reach me?', href: '#contact' }
 	]}
 />
+
 <SmoothScroll bind:scrollY bind:size bind:scrollbar damping={0.05}>
 	<HeroSection bind:el={options['hero']} />
 	<SkillsSection bind:el={options['skills']} />
