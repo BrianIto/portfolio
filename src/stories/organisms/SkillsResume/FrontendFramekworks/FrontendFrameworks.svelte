@@ -19,7 +19,11 @@
 				JavaScript Frontend Framework. But don't believe my words, <b>believe my code:</b>
 			</p>
 			<ul>
-				<li>Check this website Storybook for a view of the components and docs I made.</li>
+				<li>
+					Check <a href="https://6792f08d954e696bb617aff2-axsbsivers.chromatic.com/"
+						>this website Storybook</a
+					> for a view of the components and docs I made.
+				</li>
 				<li>Check this website GitHub Repository to check if the code is well-written.</li>
 			</ul>
 			<div class="flex flex-col gap-4 lg:grid lg:grid-cols-2">
