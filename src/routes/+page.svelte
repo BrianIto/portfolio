@@ -11,6 +11,7 @@
 	import { page } from '$app/state';
 	import { enhance } from '$app/forms';
 	import { scaleLinear } from 'd3';
+	import Button from '../stories/atoms/Button/Button.svelte';
 
 	let scrollY = $state(0);
 

@@ -5,6 +5,4 @@
 	let { children } = $props();
 </script>
 
-<ParaglideJS {i18n}>
 	{@render children()}
-</ParaglideJS>

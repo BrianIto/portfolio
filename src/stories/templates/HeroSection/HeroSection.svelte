@@ -16,7 +16,7 @@
 
 <main
 	bind:this={el}
-	class="relative flex min-h-[100vh] max-w-[100vw] items-center justify-center overflow-x-hidden text-center lg:text-left xl:justify-start"
+	class="relative flex h-screen max-w-[100vw] items-center justify-center overflow-x-hidden text-center lg:text-left xl:justify-start"
 >
 	<section class="flex w-[100vw] flex-col items-center px-12 lg:items-start xl:static xl:pl-36">
 		<FullLogo class="w-64 xl:w-80" animated />
