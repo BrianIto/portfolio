@@ -116,11 +116,11 @@ const HeroSection: React.FC<Props> = ({
 	});
 	return (
 		<div className="flex flex-col h-screen items-center relative justify-center gap-3 flex-wrap">
-			<div className="w-full flex justify-center -mt-32 mb-2 lg:mb-6">
+			<div className="w-full flex justify-center -mt-14 md:-mt-32 mb-2 lg:mb-6">
 				<FullLogo width={230} className="mb-4" />
 			</div>
 			<svg
-				className="rotate absolute w-96"
+				className="rotate absolute w-9/12 md:w-96"
 				viewBox="0 0 44 44"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
@@ -140,10 +140,10 @@ const HeroSection: React.FC<Props> = ({
 				</div>
 
 				<div className="text-center">
-					<h1 className="animated-text font-display tracking-tighter text-[#8C8C8C] text-[66px] lg:text-[76px] mb-[-37px]">
+					<h1 className="animated-text font-display tracking-tighter text-[#8C8C8C] text-[52px] lg:text-[76px] mb-[-37px]">
 						Giving life to
 					</h1>
-					<h1 className="animated-text text-shadow-[0px_12px_88px_rgba(255,255,255,0.25)] font-display tracking-tighter text-[66px] lg:text-[76px]">
+					<h1 className="animated-text text-shadow-[0px_12px_88px_rgba(255,255,255,0.25)] mt-2 md:mt-0 font-display tracking-tighter text-[52px] lg:text-[76px]">
 						amazing designs.
 					</h1>
 				</div>

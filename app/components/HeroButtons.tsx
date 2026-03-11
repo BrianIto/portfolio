@@ -10,7 +10,7 @@ const HeroButtons: React.FC<Props> = ({
 	onClickSecondary = () => {},
 }) => {
 	return (
-		<div className="w-fit flex items-center justify-center gap-2 md:gap-8 mt-12 mx-auto">
+		<div className="w-fit flex flex-col md:flex-row  items-center justify-center gap-4 md:gap-8 mt-12 mx-auto">
 			<div className="button">
 				<GlowingTag onClick={onClickPrimary} size="lg">
 					Let's build something
