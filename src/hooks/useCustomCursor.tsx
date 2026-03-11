@@ -58,7 +58,7 @@ const useCustomCursor = () => {
 		let outerX = -100,
 			outerY = -100;
 
-		const onMove = (e) => {
+		const onMove = (e: MouseEvent) => {
 			mouseX = e.clientX;
 			mouseY = e.clientY;
 			inner.style.left = mouseX + "px";
@@ -101,7 +101,7 @@ const useCustomCursor = () => {
 
 		return () => {
 			window.removeEventListener("mousemove", onMove);
-			cancelAnimationFrame(raf);
+			if (raf !== undefined) cancelAnimationFrame(raf);
 			document.getElementById("retro-cursor-style")?.remove();
 			document.getElementById("retro-cursor-outer")?.remove();
 			document.getElementById("retro-cursor-inner")?.remove();
