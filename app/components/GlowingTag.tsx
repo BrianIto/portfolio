@@ -5,7 +5,7 @@ import { cn } from "@/utils/cn";
 interface Props {
 	size?: "sm" | "lg";
 	onClick?: () => void;
-	className: ClassValue;
+	className?: ClassValue;
 }
 const GlowingTag: React.FC<PropsWithChildren<Props>> = ({
 	children,
