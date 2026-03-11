@@ -17,7 +17,7 @@ const PricingSection: React.FC = () => {
 				"can often do majority of simple tasks and updates.",
 				"60% upfront, 40% in the end of the journey.",
 				"perfect for listed tasks.",
-				"if task finished before 8h, I give the corresponding amount of the money back, max of 35%.",
+				"if all tasks are finished before 8h the corresponding money is given back. max 35% back.",
 				"I accept crypto (USDC, USD1) with a 5% discount.",
 			],
 		},
@@ -67,30 +67,30 @@ const PricingSection: React.FC = () => {
 	});
 
 	return (
-		<div className="w-[950px]">
+		<div className="md:max-w-[700px] lg:max-w-[940px]">
 			<h1
 				ref={title}
-				className="w-full text-[62px] mt-12 font-display tracking-tighter text-left"
+				className="w-full  mt-4 font-display tracking-tighter text-[40px] md:text-[44px] lg:text-[62px] text-center md:text-left"
 			>
 				Pricing
 			</h1>
-			<div className="w-full gap-[28px] grid mt-8 grid-cols-[1fr_1.25fr]">
+			<div className="w-full px-8 md:px-0 gap-[28px] flex flex-col-reverse md:grid mt-8 md:grid-cols-[1fr_1.25fr]">
 				{methods.map((method, index) => (
 					<motion.div
 						key={index}
-						className="pricing-el border flex flex-col gap-3 p-6  justify-center rounded-lg border-white/20"
+						className="pricing-el border flex flex-col gap-3 p-6  bg-background  rounded-lg border-white/20"
 					>
 						<h2 className="font-sans leading-5.5 tracking-tighter text-[19px] font-medium">
 							{method.type}
 						</h2>
 
-						<p className="font-sans leading-[47px] tracking-tight text-[48px] text-white">
+						<p className="font-sans leading-[47px] tracking-tight text-[40px] md:text-[48px] text-white">
 							USD {method.price}
 						</p>
 						<h2 className="font-sans leading-5.5 tracking-tighter text-[19px] font-medium">
 							{method.title}
 						</h2>
-						<ul className="mt-3 flex flex-col gap-2 text-[#BEBEBE] text-[15px] font-sans">
+						<ul className="mt-3 flex flex-col gap-2 text-[#BEBEBE] text-[14px] md:text-[15px] font-sans">
 							{method.bullets.map((bullet, index) => (
 								<li key={bullet}>{bullet}</li>
 							))}
@@ -98,7 +98,7 @@ const PricingSection: React.FC = () => {
 					</motion.div>
 				))}
 			</div>
-			<div className="mt-8 text-[#CCC] font-display text-[36px] tracking-tighter">
+			<div className="mt-8 text-[#CCC] font-display text-[28px] text-center md:text-[36px] tracking-tighter">
 				I am also available{" "}
 				<span className="font-medium text-white">for hiring.</span>
 			</div>

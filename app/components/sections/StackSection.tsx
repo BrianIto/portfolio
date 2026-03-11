@@ -50,18 +50,22 @@ const StackSection: React.FC = () => {
 	});
 
 	return (
-		<div className="max-w-[940px] mt-12 flex items-center flex-col">
-			<h1 className="font-display w-fit relative tracking-tighter text-[#999] text-[60px]">
+		<div
+			id="stack-section"
+			className="md:max-w-[700px] lg:max-w-[940px] mt-12 flex items-center flex-col"
+		>
+			<h1 className="font-display w-fit text-center md:text-left relative tracking-tighter text-[#999] text-[36px] md:text-[44px] lg:text-[60px]">
 				Stack for{" "}
 				<button className="text-white inline-flex items-center justify-center">
-					frontend development &nbsp; <RiArrowDownLine className="size-9" />
+					frontend development &nbsp;{" "}
+					<RiArrowDownLine className="size-5 lg:size-9" />
 				</button>
-				<div className="text-[20px] tracking-tight -mt-4 text-white absolute right-0">
+				<div className="text-[18px] lg:text-[20px] tracking-tight md:-mt-4 text-white md:absolute right-0">
 					Click to change
 				</div>
 			</h1>
 
-			<div className="w-full grid border border-white/15 mb-10 mt-20 grid-cols-[1.18fr_1fr]">
+			<div className="w-full bg-background flex flex-col-reverse md:grid border border-white/15 mb-10 mt-20 md:grid-cols-[1.18fr_1fr]">
 				<div className=" border-r border-white/15">
 					<div className="flex flex-col gap-5 p-8">
 						<h2 className="font-display tracking-tight font-medium text-[30px]">
@@ -97,12 +101,12 @@ const StackSection: React.FC = () => {
 						</motion.div>
 					))}
 				</div>
-				<div className="h-full flex items-center justify-center w-full relative bg-[linear-gradient(0deg,_#161616_0%,_transparent_100%)]">
+				<div className="h-full flex border-b md:border-0 border-white/20 py-8 md:py-0 items-center justify-center w-full relative bg-[linear-gradient(0deg,_#161616_0%,_transparent_100%)]">
 					{" "}
-					<div className="border flex items-center relative justify-center rounded-full w-102 h-102 shadow-[inset_0px_0px_24px_var(--amber-low-opacity)] border-amber/20 text-amber">
+					<div className="border flex items-center relative justify-center rounded-full size-78 lg:size-102 shadow-[inset_0px_0px_24px_var(--amber-low-opacity)] border-amber/20 text-amber">
 						<div
 							ref={orbitContainer}
-							className="border flex items-center relative justify-center rounded-full w-72 h-72 shadow-[inset_0px_0px_24px_var(--amber-low-opacity)] border-amber/20 text-amber"
+							className="border flex items-center relative justify-center rounded-full lg:size-72 size-60 shadow-[inset_0px_0px_24px_var(--amber-low-opacity)] border-amber/20 text-amber"
 						>
 							<motion.div
 								className="absolute inset-0"
@@ -138,8 +142,8 @@ const StackSection: React.FC = () => {
 									<React className="size-8" />
 								</div>
 							</motion.div>
-							<motion.div className="one-ring">
-								<OneRing />
+							<motion.div className="one-ring ">
+								<OneRing className="size-56 lg:size-72" />
 							</motion.div>
 						</div>
 					</div>

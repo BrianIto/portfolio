@@ -74,14 +74,14 @@ const ContactSection: React.FC = () => {
 	}, []);
 
 	return (
-		<div className="my-20">
+		<div id="contact-section" className="my-20">
 			<h1
 				ref={title}
-				className="font-display mb-8 rounded-lg text-center tracking-tighter text-[66px]"
+				className="w-full my-4 font-display tracking-tighter text-[40px] md:text-[44px] lg:text-[62px] text-center "
 			>
 				Contact me
 			</h1>
-			<div className="w-[500px] border border-white/20 flex flex-col gap-10 items-center rounded-lg py-[44px] px-[56px]">
+			<div className="min-w-[320px] max-w-[500px] border border-white/20 flex flex-col gap-10 items-center bg-background rounded-lg py-[44px] px-[24px] md:px-[56px]">
 				<p className="font-sans text-[24px]">Let's book a call</p>
 				<div className="w-full ">
 					<GlowingTag
@@ -93,10 +93,16 @@ const ContactSection: React.FC = () => {
 					</GlowingTag>
 				</div>
 				<p className="font-sans text-[24px] ">socials</p>
-				<div className=" flex justify-between  w-full">
+				<div className="grid justify-center grid-cols-3 gap-6 md:flex md:justify-between w-full">
 					{socials.map(({ icon: Icon, url }, index) => (
-						<a key={index} href={url} target="_blank" rel="noopener noreferrer">
-							<Icon className="hover:text-white duration-300 size-10 text-white/40" />
+						<a
+							key={index}
+							href={url}
+							target="_blank"
+							className="flex justify-center items-center"
+							rel="noopener noreferrer"
+						>
+							<Icon className=" hover:text-white duration-300  size-10 text-white/40" />
 						</a>
 					))}
 				</div>

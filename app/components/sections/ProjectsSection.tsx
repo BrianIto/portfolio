@@ -68,20 +68,20 @@ const ProjectsSection: React.FC = () => {
 	);
 
 	return (
-		<div ref={container} className="w-[950px]">
+		<div ref={container} className="md:max-w-[700px] lg:max-w-[940px]">
 			<h1
 				ref={title}
-				className="w-full text-[62px] mt-4 font-display tracking-tighter text-left"
+				className="w-full  mt-4 font-display tracking-tighter text-[40px] md:text-[44px] lg:text-[62px] text-center md:text-left"
 			>
 				Featured Projects
 			</h1>
-			<div className="projects w-full gap-[28px] grid mt-8 grid-cols-3">
+			<div className="projects w-full gap-3 lg:gap-[28px] flex flex-col items-center md:grid mt-8 md:grid-cols-3">
 				{projects.map((project, index) => (
 					<div
 						key={index}
-						className="project-el border flex flex-col gap-3 p-6 h-[290px] justify-center rounded-lg border-white/20"
+						className="project-el bg-background border flex flex-col gap-3 p-6 max-w-[300px] items-center text-center md:text-left h-auto md:h-[290px]  rounded-lg border-white/20"
 					>
-						<project.icon />
+						<project.icon className="w-44" />
 						<h2 className="font-sans leading-5.5 tracking-tighter text-[19px] font-medium">
 							{project.title}
 						</h2>

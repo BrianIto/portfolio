@@ -14,7 +14,7 @@ const Grid: React.FC<Props> = ({ height }) => {
 	const SQUARE_SIZE = useMemo(() => (isMobile ? 16 : 56), [isMobile]);
 
 	return (
-		<div>
+		<div className="absolute w-full z-[-1]">
 			{/** Left Side */}
 			<motion.div
 				className="w-0.25 bg-white/10 absolute"
