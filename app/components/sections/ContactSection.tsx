@@ -67,6 +67,13 @@ const ContactSection: React.FC = () => {
 	);
 
 	const handleScheduleCall = useCallback(() => {
+		// Track event in GA4
+		if (typeof window !== "undefined" && (window as any).gtag) {
+			(window as any).gtag("event", "schedule_call_click", {
+				event_category: "engagement",
+				event_label: "contact_section",
+			});
+		}
 		window.open(
 			"https://calendly.com/brian-ito/reuniao-para-discussao-de-aplicativo",
 			"_blank",
@@ -101,6 +108,20 @@ const ContactSection: React.FC = () => {
 							target="_blank"
 							className="flex justify-center items-center"
 							rel="noopener noreferrer"
+							onClick={() => {
+								// Track social media clicks in GA4
+								if (typeof window !== "undefined" && (window as any).gtag) {
+									const platform = url.includes("instagram") ? "instagram" : 
+										url.includes("twitter") ? "twitter" : 
+										url.includes("bsky") ? "bluesky" : 
+										url.includes("linkedin") ? "linkedin" : 
+										url.includes("wa.me") ? "whatsapp" : "email";
+									(window as any).gtag("event", "social_click", {
+										event_category: "engagement",
+										event_label: platform,
+									});
+								}
+							}}
 						>
 							<Icon className=" hover:text-white duration-300  size-10 text-white/40" />
 						</a>
