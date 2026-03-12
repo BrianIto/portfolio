@@ -13,7 +13,6 @@ import HeroSection from "./components/sections/HeroSection";
 import PricingSection from "./components/sections/PricingSection";
 import ProjectsSection from "./components/sections/ProjectsSection";
 import StackSection from "./components/sections/StackSection";
-
 export default function Home() {
 	const { height } = useWindowDimensions();
 
