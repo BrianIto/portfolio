@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Atkinson_Hyperlegible_Next, Halant } from "next/font/google";
 import "./globals.css";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import DynamicIsland from "./components/DynamicIsland";
 
 const atkinsonHyperlegible = Atkinson_Hyperlegible_Next({
@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<GoogleTagManager gtmId="G-2PBLVVRXGK" />
+			<GoogleAnalytics gaId="G-2PBLVVRXGK" />
 			<body
 				className={`flex flex-col items-center ${atkinsonHyperlegible.variable} ${halant.variable} antialiased bg-background`}
 			>
