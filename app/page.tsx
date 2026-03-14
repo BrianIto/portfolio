@@ -6,7 +6,9 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useCallback, useRef, useState } from "react";
 import useCustomCursor from "@/hooks/useCustomCursor";
+import useToggleableCursor from "@/hooks/useToggleableCursor";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
+import DisableCursor from "./components/DisableCursor";
 import Grid from "./components/Grid";
 import ContactSection from "./components/sections/ContactSection";
 import HeroSection from "./components/sections/HeroSection";
@@ -14,9 +16,9 @@ import PricingSection from "./components/sections/PricingSection";
 import ProjectsSection from "./components/sections/ProjectsSection";
 import StackSection from "./components/sections/StackSection";
 export default function Home() {
-	const { height } = useWindowDimensions();
+	const { height, isMobile } = useWindowDimensions();
 
-	useCustomCursor();
+	const { isEnabled, toggleCursor } = useToggleableCursor();
 
 	gsap.registerPlugin(useGSAP);
 	gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -42,16 +44,25 @@ export default function Home() {
 	}, [scrollSmootherRef.current]);
 
 	return (
-		<div className="flex flex-col items-center">
-			<Grid height={gridHeight} />
-			<HeroSection
-				onClickPrimary={onClickPrimary}
-				onClickSecondary={onClickSecondary}
-			/>
-			<StackSection />
-			<ProjectsSection />
-			<PricingSection />
-			<ContactSection />
-		</div>
+		<>
+			<div id="smooth-wrapper">
+				<div id="smooth-content">
+					<div className="flex flex-col items-center">
+						<Grid height={gridHeight} />
+						<HeroSection
+							onClickPrimary={onClickPrimary}
+							onClickSecondary={onClickSecondary}
+						/>
+						<StackSection />
+						<ProjectsSection />
+						<PricingSection />
+						<ContactSection />
+					</div>
+				</div>
+			</div>
+			{!isMobile && (
+				<DisableCursor enabled={isEnabled} onToggle={toggleCursor} />
+			)}
+		</>
 	);
 }
