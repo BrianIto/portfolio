@@ -9,12 +9,14 @@ import useCustomCursor from "@/hooks/useCustomCursor";
 import useToggleableCursor from "@/hooks/useToggleableCursor";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
 import DisableCursor from "./components/DisableCursor";
+import DynamicIsland from "./components/DynamicIsland";
 import Grid from "./components/Grid";
 import ContactSection from "./components/sections/ContactSection";
 import HeroSection from "./components/sections/HeroSection";
 import PricingSection from "./components/sections/PricingSection";
 import ProjectsSection from "./components/sections/ProjectsSection";
 import StackSection from "./components/sections/StackSection";
+import { ScrollContext } from "./context/ScrollContext";
 export default function Home() {
 	const { height, isMobile } = useWindowDimensions();
 
@@ -45,21 +47,24 @@ export default function Home() {
 
 	return (
 		<>
-			<div id="smooth-wrapper">
-				<div id="smooth-content">
-					<div className="flex flex-col items-center">
-						<Grid height={gridHeight} />
-						<HeroSection
-							onClickPrimary={onClickPrimary}
-							onClickSecondary={onClickSecondary}
-						/>
-						<StackSection />
-						<ProjectsSection />
-						<PricingSection />
-						<ContactSection />
+			<ScrollContext.Provider value={{ scrollSmootherRef }}>
+				<DynamicIsland />
+				<div id="smooth-wrapper">
+					<div id="smooth-content">
+						<div className="flex flex-col items-center">
+							<Grid height={gridHeight} />
+							<HeroSection
+								onClickPrimary={onClickPrimary}
+								onClickSecondary={onClickSecondary}
+							/>
+							<StackSection />
+							<ProjectsSection />
+							<PricingSection />
+							<ContactSection />
+						</div>
 					</div>
 				</div>
-			</div>
+			</ScrollContext.Provider>
 			{!isMobile && (
 				<DisableCursor enabled={isEnabled} onToggle={toggleCursor} />
 			)}

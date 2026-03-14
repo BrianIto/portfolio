@@ -35,7 +35,6 @@ export default function RootLayout({
 			<body
 				className={`flex flex-col items-center ${atkinsonHyperlegible.variable} ${halant.variable} antialiased bg-background`}
 			>
-				<DynamicIsland />
 				{children}
 			</body>
 		</html>

@@ -13,9 +13,18 @@ interface Props {
 	};
 	index: number;
 	onToggle: () => void;
+	onNavigate: (pageName: string) => void;
 	isOpen: boolean;
+	isSelected: boolean;
 }
-const ListItem: React.FC<Props> = ({ page, index, onToggle, isOpen }) => {
+const ListItem: React.FC<Props> = ({
+	page,
+	index,
+	onToggle,
+	onNavigate,
+	isOpen,
+	isSelected,
+}) => {
 	return (
 		<>
 			<motion.button
@@ -33,15 +42,20 @@ const ListItem: React.FC<Props> = ({ page, index, onToggle, isOpen }) => {
 					e.stopPropagation();
 					if (page.sub) {
 						onToggle();
+					} else {
+						onNavigate(page.name);
 					}
 				}}
 				className={cn(
-					"w-full  flex last-of-type:rounded-b-xl rounded-b-md rounded-t-md px-2 py-1.5 first:mt-1 last-of-type:mb-0.75 text-sm text-left items-center gap-3",
+					"w-full  flex last-of-type:rounded-b-xl rounded-b-md rounded-t-md px-2 py-1.5 first:mt-1 last-of-type:mb-0.75 text-sm text-left items-center gap-3 transition-colors",
 					{
 						"hover:bg-[#1A1A1A]": page.sub === undefined,
 					},
 					{
 						"border-b rounded-b-none border-white/10": page.sub !== undefined,
+					},
+					{
+						"bg-[#1A1A1A]": isSelected,
 					},
 				)}
 			>
@@ -79,6 +93,10 @@ const ListItem: React.FC<Props> = ({ page, index, onToggle, isOpen }) => {
 										maxHeight: 0,
 										opacity: 0,
 										padding: 0,
+									}}
+									onClick={(e) => {
+										e.stopPropagation();
+										onNavigate(s.name);
 									}}
 									className={cn(
 										"w-full  hover:bg-[#1A1A1A] flex text-[#AAA] rounded-b-md rounded-t-md first:mt-1 last-of-type:mb-0.75 text-sm text-left items-center gap-3 pl-8",

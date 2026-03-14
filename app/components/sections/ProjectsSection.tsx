@@ -68,7 +68,7 @@ const ProjectsSection: React.FC = () => {
 	);
 
 	return (
-		<div ref={container} className="md:max-w-[700px] lg:max-w-[940px]">
+		<div id="projects-section" ref={container} className="md:max-w-[700px] lg:max-w-[940px]">
 			<h1
 				ref={title}
 				className="w-full  mt-4 font-display tracking-tighter text-[40px] md:text-[44px] lg:text-[62px] text-center md:text-left"
