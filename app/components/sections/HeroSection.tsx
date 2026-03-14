@@ -116,7 +116,7 @@ const HeroSection: React.FC<Props> = ({
 		);
 	});
 	return (
-		<div className="flex flex-col h-screen items-center relative justify-center gap-3 flex-wrap">
+		<div id="hero-section" className="flex flex-col h-screen items-center relative justify-center gap-3 flex-wrap">
 			<div className="w-full flex justify-center -mt-14 md:-mt-32 mb-2 lg:mb-6">
 				<FullLogo width={230} className="mb-4" />
 			</div>

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Atkinson_Hyperlegible_Next, Halant } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import DynamicIsland from "./components/DynamicIsland";
 
 const atkinsonHyperlegible = Atkinson_Hyperlegible_Next({
 	variable: "--font-atkinson",
@@ -34,10 +33,7 @@ export default function RootLayout({
 			<body
 				className={`flex flex-col items-center ${atkinsonHyperlegible.variable} ${halant.variable} antialiased bg-background`}
 			>
-				<DynamicIsland />
-				<div id="smooth-wrapper">
-					<div id="smooth-content">{children}</div>
-				</div>
+				{children}
 			</body>
 		</html>
 	);

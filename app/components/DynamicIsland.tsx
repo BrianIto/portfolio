@@ -9,12 +9,28 @@ import {
 	RiStarSmileLine,
 } from "@remixicon/react";
 import { AnimatePresence, motion, stagger } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/utils/cn";
+import { useScroll } from "../context/ScrollContext";
 import ListItem from "./DynamicIsland.ListItem";
+
+// Navigation mapping for all sections
+const navigationMap: Record<string, string> = {
+	Homepage: "#hero-section",
+	"Stack for": "#stack-section",
+	"Frontend Development": "#stack-section",
+	"Data Visualization": "#stack-section",
+	"Featured Projects": "#projects-section",
+	Integra: "#projects-section",
+	Commitsense: "#projects-section",
+	"DLMR Split Payments": "#projects-section",
+	Pricing: "#pricing-section",
+	Contact: "#contact-section",
+};
 
 const DynamicIsland: React.FC = () => {
 	const [open, setOpen] = useState(false);
+	const { scrollSmootherRef } = useScroll();
 
 	const variants = {
 		open: {
@@ -65,6 +81,67 @@ const DynamicIsland: React.FC = () => {
 	];
 
 	const [pageIndex, setPageIndex] = useState(-1);
+	const [selectedIndex, setSelectedIndex] = useState(0);
+
+	// Handle keyboard events
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
+			// Toggle with "/" key
+			if (e.key === "/") {
+				e.preventDefault();
+				setOpen((prev) => !prev);
+				return;
+			}
+
+			// Only handle other keys when open
+			if (open) {
+				if (e.key === "Escape") {
+					e.preventDefault();
+					setOpen(false);
+					setPageIndex(-1);
+					setSelectedIndex(0);
+				} else if (e.key === "ArrowDown") {
+					e.preventDefault();
+					setSelectedIndex((prev) => (prev + 1) % pages.length);
+				} else if (e.key === "ArrowUp") {
+					e.preventDefault();
+					setSelectedIndex((prev) => (prev - 1 + pages.length) % pages.length);
+				} else if (e.key === "Enter") {
+					e.preventDefault();
+					const selectedPage = pages[selectedIndex];
+					if (selectedPage.sub) {
+						// Toggle submenu
+						setPageIndex((prev) =>
+							prev === selectedIndex ? -1 : selectedIndex,
+						);
+					} else {
+						// Navigate to page
+						handleNavigate(selectedPage.name);
+					}
+				}
+			}
+		};
+
+		window.addEventListener("keydown", handleKeyDown);
+		return () => window.removeEventListener("keydown", handleKeyDown);
+	}, [open, selectedIndex, pageIndex]);
+
+	// Reset selected index when closing
+	useEffect(() => {
+		if (!open) {
+			setSelectedIndex(0);
+		}
+	}, [open]);
+
+	// Handle navigation
+	const handleNavigate = (pageName: string) => {
+		const sectionId = navigationMap[pageName];
+		if (sectionId && scrollSmootherRef.current) {
+			scrollSmootherRef.current.scrollTo(sectionId, true, "top 100px");
+			setOpen(false);
+			setPageIndex(-1);
+		}
+	};
 
 	return (
 		<>
@@ -88,7 +165,7 @@ const DynamicIsland: React.FC = () => {
 
 			<motion.div
 				animate={open ? "open" : "closed"}
-				className="fixed z-[9999] top-4 flex flex-col "
+				className="fixed outline-none z-[9999] top-4 flex flex-col "
 			>
 				<motion.button
 					variants={variants}
@@ -132,10 +209,13 @@ const DynamicIsland: React.FC = () => {
 							{open &&
 								pages.map((page, index) => (
 									<ListItem
+										key={page.name}
 										onToggle={() => {
 											setPageIndex((prev) => (prev === index ? -1 : index));
 										}}
+										onNavigate={handleNavigate}
 										isOpen={pageIndex === index}
+										isSelected={selectedIndex === index}
 										page={page}
 										index={index}
 									/>
