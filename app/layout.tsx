@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Atkinson_Hyperlegible_Next, Halant } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import DisableCursor from "./components/DisableCursor";
+import DynamicIsland from "./components/DynamicIsland";
 
 const atkinsonHyperlegible = Atkinson_Hyperlegible_Next({
 	variable: "--font-atkinson",
