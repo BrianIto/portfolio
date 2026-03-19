@@ -19,6 +19,7 @@ interface Props {
 	position?: "top" | "bottom" | "left" | "right";
 	style?: React.CSSProperties;
 	condition?: boolean;
+	margin?: number;
 }
 
 const ContainerWithTooltip: React.FC<PropsWithChildren<Props>> = ({
@@ -28,6 +29,7 @@ const ContainerWithTooltip: React.FC<PropsWithChildren<Props>> = ({
 	tooltipClass,
 	position = "top",
 	style = {},
+	margin = 4,
 	condition = true,
 }) => {
 	const ref = useRef<HTMLDivElement>(null);
@@ -47,25 +49,25 @@ const ContainerWithTooltip: React.FC<PropsWithChildren<Props>> = ({
 			switch (position) {
 				case "top":
 					return {
-						top: triggerRect.top - tooltipBox.height - 4,
+						top: triggerRect.top - tooltipBox.height - margin,
 						left: triggerRect.left + triggerRect.width / 2,
 					};
 				case "bottom":
 					return {
-						top: triggerRect.bottom + 4,
+						top: triggerRect.bottom + margin,
 						left: triggerRect.left + triggerRect.width / 2,
 					};
 				case "left":
 					return {
 						top:
 							triggerRect.top + triggerRect.height / 2 - tooltipBox.height / 2,
-						left: triggerRect.left - tooltipBox.width - 4,
+						left: triggerRect.left - tooltipBox.width - margin,
 					};
 				case "right":
 					return {
 						top:
 							triggerRect.top + triggerRect.height / 2 - tooltipBox.height / 2,
-						left: triggerRect.right + 4,
+						left: triggerRect.right + margin,
 					};
 				default:
 					return null;
@@ -141,7 +143,7 @@ const ContainerWithTooltip: React.FC<PropsWithChildren<Props>> = ({
 					<div
 						ref={tooltipRef}
 						className={cn(
-							"pointer-events-none fixed z-9999 max-w-[550px] whitespace-normal rounded border border-subtle-border bg-background-dark px-2.5 py-1.5 font-medium text-[12px] text-secondary-text leading-[18px] shadow-md backdrop-blur-sm transition-[opacity,transform,backdrop-filter] duration-150",
+							"pointer-events-none fixed z-9999 max-w-[550px] whitespace-normal rounded border border-white/20 bg-background px-2.5 py-1.5 font-medium text-[12px] text-secondary-text leading-[18px] shadow-md backdrop-blur-sm transition-[opacity,transform,backdrop-filter] duration-150",
 							(position === "top" || position === "bottom") &&
 								"-translate-x-1/2",
 							tooltipClass,

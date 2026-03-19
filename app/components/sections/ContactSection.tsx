@@ -11,6 +11,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useCallback, useRef } from "react";
+import ContainerWithTooltip from "../ContainerWithTooltip";
 import GlowingTag from "../GlowingTag";
 
 const ContactSection: React.FC = () => {
@@ -18,26 +19,32 @@ const ContactSection: React.FC = () => {
 		{
 			icon: RiInstagramLine,
 			url: "https://www.instagram.com/ito.brian",
+			name: "Instagram",
 		},
 		{
 			icon: RiTwitterXLine,
 			url: "https://twitter.com/BrianIto_",
+			name: "Twitter/X",
 		},
 		{
 			icon: RiBlueskyLine,
 			url: "https://bsky.app/profile/brianito.com",
+			name: "Bluesky",
 		},
 		{
 			icon: RiLinkedinFill,
 			url: "https://www.linkedin.com/in/brian-ito",
+			name: "LinkedIn",
 		},
 		{
 			icon: RiWhatsappLine,
 			url: "https://wa.me/+5592984374357",
+			name: "WhatsApp",
 		},
 		{
 			icon: RiMailLine,
 			url: "mailto:brian.oliveira100@gmail.com",
+			name: "Email",
 		},
 	];
 
@@ -102,29 +109,42 @@ const ContactSection: React.FC = () => {
 				<p className="font-sans text-[24px] ">socials</p>
 				<div className="grid justify-center grid-cols-3 gap-6 md:flex md:justify-between w-full">
 					{socials.map(({ icon: Icon, url }, index) => (
-						<a
+						<ContainerWithTooltip
+							tooltipLabel={socials[index].name}
+							position={"bottom"}
+							tooltipClass="!text-white/70"
 							key={index}
-							href={url}
-							target="_blank"
-							className="flex justify-center items-center"
-							rel="noopener noreferrer"
-							onClick={() => {
-								// Track social media clicks in GA4
-								if (typeof window !== "undefined" && (window as any).gtag) {
-									const platform = url.includes("instagram") ? "instagram" : 
-										url.includes("twitter") ? "twitter" : 
-										url.includes("bsky") ? "bluesky" : 
-										url.includes("linkedin") ? "linkedin" : 
-										url.includes("wa.me") ? "whatsapp" : "email";
-									(window as any).gtag("event", "social_click", {
-										event_category: "engagement",
-										event_label: platform,
-									});
-								}
-							}}
 						>
-							<Icon className=" hover:text-white duration-300  size-10 text-white/40" />
-						</a>
+							<a
+								key={index}
+								href={url}
+								target="_blank"
+								className="flex justify-center items-center"
+								rel="noopener noreferrer"
+								onClick={() => {
+									// Track social media clicks in GA4
+									if (typeof window !== "undefined" && (window as any).gtag) {
+										const platform = url.includes("instagram")
+											? "instagram"
+											: url.includes("twitter")
+												? "twitter"
+												: url.includes("bsky")
+													? "bluesky"
+													: url.includes("linkedin")
+														? "linkedin"
+														: url.includes("wa.me")
+															? "whatsapp"
+															: "email";
+										(window as any).gtag("event", "social_click", {
+											event_category: "engagement",
+											event_label: platform,
+										});
+									}
+								}}
+							>
+								<Icon className=" hover:text-white duration-300  size-10 text-white/40" />
+							</a>
+						</ContainerWithTooltip>
 					))}
 				</div>
 			</div>
