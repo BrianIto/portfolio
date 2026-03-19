@@ -22,6 +22,18 @@ export const metadata: Metadata = {
 	description:
 		"Full-stack developer portfolio. Creating websites and web apps that stand out. React, Next.js, Tailwind CSS, Web3, Node.js, Golang, AWS and more. Let's build something amazing together.",
 	icons: "/Logo.svg",
+	openGraph: {
+		title: "Brian Ito - Portfolio",
+		description:
+			"Full-stack developer portfolio. Creating websites and web apps that stand out. React, Next.js, Tailwind CSS, Web3, Node.js, Golang, AWS and more. Let's build something amazing together.",
+		url: "https://brianito.com",
+		siteName: "Brian Ito - Portfolio",
+		images: [
+			{
+				url: "https://brianito.com/logo_og.avif",
+			},
+		],
+	},
 };
 
 export default function RootLayout({
