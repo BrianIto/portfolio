@@ -19,7 +19,7 @@ const projects = [
 		icon: CommitsenseLogo,
 		title: "AI Powered perfect commit messages.",
 		description:
-			"showcases AI Integration, CLI, Prompt security and attention to detail.",
+			"showcases AI Integration, LLMs, CLI creation, Prompt security and attention to detail.",
 		link: "Personal Project",
 	},
 
@@ -27,7 +27,7 @@ const projects = [
 		icon: DLMRLogo,
 		title: "Payment Split made easy for Attorneys using DFS",
 		description:
-			"Showcase good control of algorithms, relational databases, finances control.",
+			"Showcase good control of algorithms (Depth-First Search), relational databases, finances control and transactional data.",
 		link: "Authentication Gated Web App",
 	},
 ];
@@ -68,7 +68,11 @@ const ProjectsSection: React.FC = () => {
 	);
 
 	return (
-		<div id="projects-section" ref={container} className="md:max-w-[700px] lg:max-w-[940px]">
+		<div
+			id="projects-section"
+			ref={container}
+			className="md:max-w-[700px] lg:max-w-[940px]"
+		>
 			<h1
 				ref={title}
 				className="w-full  mt-4 font-display tracking-tighter text-[40px] md:text-[44px] lg:text-[62px] text-center md:text-left"
@@ -79,16 +83,16 @@ const ProjectsSection: React.FC = () => {
 				{projects.map((project, index) => (
 					<div
 						key={index}
-						className="project-el bg-background border flex flex-col gap-3 p-6 max-w-[300px] items-center text-center md:text-left h-auto md:h-[290px]  rounded-lg border-white/20"
+						className="project-el bg-background border flex flex-col gap-3 p-6 max-w-[300px] items-center md:items-start text-center md:text-left h-auto md:h-[290px]  rounded-lg border-white/20"
 					>
-						<project.icon className="w-44" />
+						<project.icon className="w-44 max-h-[37px] md:w-auto" />
 						<h2 className="font-sans leading-5.5 tracking-tighter text-[19px] font-medium">
 							{project.title}
 						</h2>
 						<p className="font-sans tracking-tight text-[14px] text-[#BFBFBF]">
 							{project.description}
 						</p>
-						<p className="font-sans tracking-tight font-medium">
+						<p className="font-sans md:text-left md:w-full tracking-tight font-medium">
 							{project.link}
 						</p>
 					</div>

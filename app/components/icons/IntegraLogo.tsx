@@ -3,9 +3,8 @@ import type { SVGProps } from "react";
 const IntegraLogo: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 	return (
 		<svg
-			width="144"
-			height="41"
 			viewBox="0 0 144 41"
+			{...props}
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 		>
