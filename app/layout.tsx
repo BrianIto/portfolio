@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Atkinson_Hyperlegible_Next, Halant } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import DisableCursor from "./components/DisableCursor";
-import DynamicIsland from "./components/DynamicIsland";
 
 const atkinsonHyperlegible = Atkinson_Hyperlegible_Next({
 	variable: "--font-atkinson",
@@ -17,22 +15,27 @@ const halant = Halant({
 	weight: ["400", "500", "600", "700"],
 });
 
+const title = "Brian Ito - Portfolio";
+const description =
+	"Full-stack developer portfolio. Creating websites and web apps that stand out. React, Next.js, Tailwind CSS, Web3, Node.js, Golang, AWS and more. Let's build something amazing together.";
+const images = [{ url: "https://brianito.com/logo_og.avif" }];
+
 export const metadata: Metadata = {
-	title: "Brian Ito - Portfolio",
-	description:
-		"Full-stack developer portfolio. Creating websites and web apps that stand out. React, Next.js, Tailwind CSS, Web3, Node.js, Golang, AWS and more. Let's build something amazing together.",
+	title,
+	description,
 	icons: "/Logo.svg",
 	openGraph: {
-		title: "Brian Ito - Portfolio",
-		description:
-			"Full-stack developer portfolio. Creating websites and web apps that stand out. React, Next.js, Tailwind CSS, Web3, Node.js, Golang, AWS and more. Let's build something amazing together.",
+		title,
+		description,
 		url: "https://brianito.com",
-		siteName: "Brian Ito - Portfolio",
-		images: [
-			{
-				url: "https://brianito.com/logo_og.avif",
-			},
-		],
+		siteName: title,
+		images,
+	},
+	twitter: {
+		card: "summary_large_image",
+		title,
+		description,
+		images,
 	},
 };
 
