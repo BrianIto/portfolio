@@ -1,14 +1,16 @@
 "use client";
 
-import { applyNodeChanges, Background, ReactFlow } from "@xyflow/react";
+import {
+	applyNodeChanges,
+	Background,
+	type Node,
+	type OnNodesChange,
+	ReactFlow,
+} from "@xyflow/react";
 import { useCallback, useRef, useState } from "react";
 import "@xyflow/react/dist/style.css";
 import { useGSAP } from "@gsap/react";
-import {
-	RiCheckboxCircleFill,
-	RiCheckboxCircleLine,
-	RiCheckLine,
-} from "@remixicon/react";
+import { RiCheckboxCircleFill } from "@remixicon/react";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -88,7 +90,10 @@ const IntegraPage: React.FC = () => {
 		},
 	];
 
-	const onNodesChange = useCallback(
+	const [nodes, setNodes] = useState<Node[]>(initialNodes);
+	const [edges, setEdges] = useState(initialEdges);
+
+	const onNodesChange: OnNodesChange = useCallback(
 		(changes) =>
 			setNodes((nodesSnapshot) => applyNodeChanges(changes, nodesSnapshot)),
 		[],
@@ -98,9 +103,6 @@ const IntegraPage: React.FC = () => {
 	gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 	const scrollSmootherRef = useRef<ScrollSmoother>(null);
-
-	const [nodes, setNodes] = useState(initialNodes);
-	const [edges, setEdges] = useState(initialEdges);
 
 	const { height, isMobile } = useWindowDimensions();
 	const [gridHeight, setGridHeight] = useState(0);
