@@ -1,5 +1,6 @@
 "use client";
 
+import { useGSAP } from "@gsap/react";
 import {
 	RiArrowDownLine,
 	RiComputerLine,
@@ -8,6 +9,7 @@ import {
 	RiPhoneLine,
 	RiStarSmileLine,
 } from "@remixicon/react";
+import gsap from "gsap";
 import { AnimatePresence, motion, stagger } from "motion/react";
 import { useEffect, useState } from "react";
 import { cn } from "@/utils/cn";
@@ -142,6 +144,18 @@ const DynamicIsland: React.FC = () => {
 			setPageIndex(-1);
 		}
 	};
+
+	gsap.registerPlugin(useGSAP);
+
+	useGSAP(() => {
+		gsap.from(".dynamic-island", {
+			duration: 1,
+			y: 4,
+			scaleX: 0,
+			opacity: 0,
+			ease: "elastic.inOut",
+		});
+	}, []);
 
 	return (
 		<>

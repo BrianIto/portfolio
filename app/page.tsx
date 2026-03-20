@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useCallback, useRef, useState } from "react";
-import useCustomCursor from "@/hooks/useCustomCursor";
 import useToggleableCursor from "@/hooks/useToggleableCursor";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
 import DisableCursor from "./components/DisableCursor";

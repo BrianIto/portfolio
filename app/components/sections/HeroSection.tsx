@@ -34,14 +34,6 @@ const HeroSection: React.FC<Props> = ({
 			type: "chars",
 		});
 
-		gsap.from(".dynamic-island", {
-			duration: 1,
-			y: 4,
-			scaleX: 0,
-			opacity: 0,
-			ease: "elastic.inOut",
-		});
-
 		gsap.from(".rotate", {
 			duration: 20,
 			rotate: 360,
