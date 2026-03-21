@@ -14,10 +14,12 @@ import { RiCheckboxCircleFill } from "@remixicon/react";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 import { motion } from "motion/react";
 import useToggleableCursor from "@/hooks/useToggleableCursor";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
 import DynamicIsland from "../../components/DynamicIsland";
+import Footer from "../../components/Footer";
 import Grid from "../../components/Grid";
 import IntegraLogo from "../../components/icons/IntegraLogo";
 import Logo from "../../components/icons/Logo";
@@ -116,6 +118,41 @@ const IntegraPage: React.FC = () => {
 		});
 	}, [height]);
 
+	useGSAP(() => {
+		const split = SplitText.create(".animated-text", {
+			type: "chars",
+		});
+
+		const masterTimeline = gsap.timeline();
+
+		// First animate the split text
+		masterTimeline.from(split.chars, {
+			duration: 0.6,
+			y: 2,
+			scale: 0.9,
+			autoAlpha: 0,
+			stagger: 0.04,
+			ease: "circ.out",
+		});
+
+		// Then set up scroll triggers for sections after split text completes
+		masterTimeline.add(() => {
+			gsap.utils.toArray<HTMLElement>(".section").forEach((section) => {
+				gsap.to(section, {
+					opacity: 1,
+					x: 0,
+					duration: 0.7,
+					ease: "power2.out",
+					scrollTrigger: {
+						trigger: section,
+						start: "top 80%",
+						toggleActions: "play none none reverse",
+					},
+				});
+			});
+		}, ">-0.3");
+	}, []);
+
 	return (
 		<ScrollContext.Provider value={{ scrollSmootherRef }}>
 			<DynamicIsland />
@@ -125,13 +162,39 @@ const IntegraPage: React.FC = () => {
 						<Grid height={gridHeight} />
 						<div className="mt-24 max-w-[940px] w-full">
 							<div className="flex flex-col gap-3 items-center mb-6">
-								<IntegraLogo className="w-36" />
-								<h1 className="font-display tracking-tighter relative font-medium text-[56px]">
+								<motion.div
+									initial={{
+										scale: 0.9,
+										opacity: 0,
+									}}
+									animate={{
+										scale: 1,
+										opacity: 1,
+									}}
+									transition={{
+										duration: 0.5,
+										ease: "backIn",
+									}}
+								>
+									<IntegraLogo className="w-36" />
+								</motion.div>
+								<h1 className="animated-text font-display tracking-tighter relative font-medium text-[56px]">
 									Project Study Case
 								</h1>
-								<div className="h-px w-36 bg-white/20 my-3"></div>
+								<motion.div
+									initial={{
+										scaleX: 0,
+									}}
+									animate={{
+										scaleX: 1,
+									}}
+									transition={{
+										delay: 0.3,
+									}}
+									className="h-px w-36 bg-white/20 my-3"
+								></motion.div>
 							</div>
-							<div>
+							<div className="section opacity-0">
 								<h1 className="font-display tracking-tighter text-[44px] mb-2">
 									The Problem
 								</h1>
@@ -147,7 +210,7 @@ const IntegraPage: React.FC = () => {
 								</p>
 							</div>
 
-							<div className="mt-8">
+							<div className="mt-8 section opacity-0">
 								<h1 className="font-display tracking-tighter mb-2 text-[44px]">
 									The Proposal
 								</h1>
@@ -174,7 +237,7 @@ const IntegraPage: React.FC = () => {
 								</p>
 							</div>
 
-							<div className="mt-8">
+							<div className="mt-8 section opacity-0">
 								<h1 className="font-display tracking-tighter mb-2 text-[44px]">
 									The Architecture
 								</h1>
@@ -199,7 +262,7 @@ const IntegraPage: React.FC = () => {
 											scale: 1,
 										}}
 										transition={{
-											delay: 0.75,
+											delay: 0.25,
 										}}
 										className=" relative h-[500px] "
 									>
@@ -220,6 +283,7 @@ const IntegraPage: React.FC = () => {
 											style={{
 												background: "var(--color-background)",
 											}}
+											className="nowheel"
 											onNodesChange={onNodesChange}
 											fitView
 										>
@@ -256,7 +320,7 @@ const IntegraPage: React.FC = () => {
 									</div>
 								</div>
 							</div>
-							<div>
+							<div className="section opacity-0">
 								<h1 className="font-display tracking-tighter text-[44px] mb-2">
 									Solution Highlights
 								</h1>
@@ -336,7 +400,7 @@ const IntegraPage: React.FC = () => {
 									/>
 								</div>
 							</div>
-							<div className="mt-8">
+							<div className="mt-8 section opacity-0">
 								<h1 className="font-display tracking-tighter text-[44px] mb-2">
 									Results
 								</h1>
@@ -420,7 +484,7 @@ const IntegraPage: React.FC = () => {
 									</div>
 								</div>
 							</div>
-							<div className="mt-8">
+							<div className="mt-8 section opacity-0">
 								<h1 className="font-display tracking-tighter text-[44px] mb-2">
 									Future Improvements
 								</h1>
@@ -487,27 +551,7 @@ const IntegraPage: React.FC = () => {
 							</div>
 						</div>
 					</div>
-
-					<footer>
-						<div className="w-full bg-background border-t border-white/20 mt-12 py-6 flex justify-center items-center ">
-							<div className="max-w-[940px] w-full">
-								<div className="w-fit">
-									<div className="size-10 mb-2 rounded border border-white/20 flex items-center justify-center bg-white/5">
-										<Logo className="size-5" />
-									</div>
-								</div>
-								<div className="flex my-auto flex-col">
-									<p className="text-md font-sans tracking-tighter font-medium text-white/90">
-										Created with Heart by Brian Ito
-									</p>
-
-									<p className=" text-xs text-white/50">
-										All rights reserved. &copy; 2026
-									</p>
-								</div>
-							</div>
-						</div>
-					</footer>
+					<Footer />
 				</div>
 			</div>
 		</ScrollContext.Provider>

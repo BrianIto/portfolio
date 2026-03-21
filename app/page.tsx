@@ -9,6 +9,7 @@ import useToggleableCursor from "@/hooks/useToggleableCursor";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
 import DisableCursor from "./components/DisableCursor";
 import DynamicIsland from "./components/DynamicIsland";
+import Footer from "./components/Footer";
 import Grid from "./components/Grid";
 import ContactSection from "./components/sections/ContactSection";
 import HeroSection from "./components/sections/HeroSection";
@@ -61,6 +62,7 @@ export default function Home() {
 							<PricingSection />
 							<ContactSection />
 						</div>
+						<Footer />
 					</div>
 				</div>
 			</ScrollContext.Provider>
