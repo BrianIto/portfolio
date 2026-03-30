@@ -150,7 +150,7 @@ const HeroSection: React.FC<Props> = ({
 			<div className="ai-free max-w-2xl px-12 text-center absolute bottom-8 text-white/45 text-[14px]">
 				this website is completely AI free, not because I don't use, but because
 				it showcases what I can do without it. Also, the only libraries used are
-				Motion and GSAP.
+				Motion and GSAP. (Added Pretext for the projects)
 			</div>
 		</div>
 	);
