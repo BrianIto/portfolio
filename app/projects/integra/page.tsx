@@ -365,7 +365,7 @@ const IntegraPage: React.FC = () => {
 								/>
 
 								<div className="flex flex-col md:grid mt-6 md:grid-cols-[1fr_1.1fr] gap-8 items-center mt-12">
-									<div className="">
+									<div className="w-full lg:w-auto">
 										<h2 className="font-display tracking-tighter font-medium text-[28px] ">
 											Maintenance Heaven
 										</h2>
