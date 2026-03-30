@@ -147,10 +147,10 @@ const HeroSection: React.FC<Props> = ({
 					onClickSecondary={onClickSecondary}
 				/>
 			</div>
-			<div className="ai-free max-w-2xl px-12 text-center absolute bottom-8 text-white/45 text-[14px]">
+			<div className="ai-free max-w-2xl lg:max-w-4xl px-12 text-center absolute bottom-8 text-white/45 text-[14px]">
 				this website is completely AI free, not because I don't use, but because
 				it showcases what I can do without it. Also, the only libraries used are
-				Motion and GSAP. (Added Pretext for the projects)
+				Motion, GSAP & Pretext.
 			</div>
 		</div>
 	);
