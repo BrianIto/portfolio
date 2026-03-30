@@ -7,6 +7,7 @@ import { useRef } from "react";
 import CommitsenseLogo from "../icons/CommitsenseLogo";
 import DLMRLogo from "../icons/DLMRLogo";
 import IntegraLogo from "../icons/IntegraLogo";
+import { JustifiedText } from "../JustifiedText";
 
 const projects = [
 	{
@@ -91,9 +92,11 @@ const ProjectsSection: React.FC = () => {
 						<h2 className="font-sans leading-5.5 tracking-tighter text-[19px] font-medium">
 							{project.title}
 						</h2>
-						<p className="font-sans tracking-tight text-[14px] text-[#BFBFBF]">
-							{project.description}
-						</p>
+						<JustifiedText
+							width={250}
+							text={project.description}
+							className="font-sans tracking-tight text-[14px] text-[#BFBFBF]"
+						></JustifiedText>
 						<p className="font-sans md:text-left md:w-full -mt-1 tracking-tight font-medium">
 							{project.link}
 						</p>

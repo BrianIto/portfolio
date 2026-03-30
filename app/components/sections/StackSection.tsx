@@ -1,8 +1,8 @@
 import { useGSAP } from "@gsap/react";
 import { RiArrowDownLine } from "@remixicon/react";
 import gsap from "gsap";
-import { motion, useAnimate } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
+import { useRef } from "react";
 import ContainerWithTooltip from "../ContainerWithTooltip";
 import Angular from "../icons/Angular";
 import NextJSIcon from "../icons/Nextjs";
@@ -11,6 +11,7 @@ import React from "../icons/React";
 import Storybook from "../icons/Storybook";
 import Svelte from "../icons/Svelte";
 import TailwindCSS from "../icons/Tailwindcss";
+import { JustifiedText } from "../JustifiedText";
 
 const StackSection: React.FC = () => {
 	const orbitContainer = useRef<HTMLDivElement>(null);
@@ -113,12 +114,14 @@ const StackSection: React.FC = () => {
 								<span className="font-semibold">rule them all</span>
 							</ContainerWithTooltip>
 						</h2>
-						<p className="font-sans">
+						<JustifiedText
+							width={450}
+							text="
 							I craft well-written, useful and documented components in any
 							JavaScript Front-end Framework, from Vanilla Javascript to SSR
 							Next.js and SvelteKit. But don't believe my words, believe my code
-							by checking this website repository and storybook.
-						</p>
+							by checking this website repository and storybook."
+						></JustifiedText>
 					</div>
 					{frameworks.map((framework, i) => (
 						<motion.div
@@ -147,7 +150,13 @@ const StackSection: React.FC = () => {
 												{framework.years}y exp.
 											</span>
 										</p>
-										<p className="mt-1">{framework.definition}</p>
+										<JustifiedText
+											fontSize={13}
+											font="'Atkinson Hyperlegible Next'"
+											text={framework.definition}
+											lineHeight={16}
+											width={210}
+										/>
 									</div>
 								}
 								position="right"

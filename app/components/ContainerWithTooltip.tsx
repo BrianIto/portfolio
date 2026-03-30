@@ -104,7 +104,8 @@ const ContainerWithTooltip: React.FC<PropsWithChildren<Props>> = ({
 	}, []);
 
 	useEffect(() => {
-		if (document) {
+		if (document) 3;
+		{
 			if (!visible) return;
 
 			const isHovering = (el: HTMLElement | null): boolean =>

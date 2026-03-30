@@ -22,7 +22,7 @@ import DynamicIsland from "../../components/DynamicIsland";
 import Footer from "../../components/Footer";
 import Grid from "../../components/Grid";
 import IntegraLogo from "../../components/icons/IntegraLogo";
-import Logo from "../../components/icons/Logo";
+import { JustifiedText } from "../../components/JustifiedText";
 import { ScrollContext } from "../../context/ScrollContext";
 
 const IntegraPage: React.FC = () => {
@@ -198,16 +198,10 @@ const IntegraPage: React.FC = () => {
 								<h1 className="font-display tracking-tighter text-[44px] mb-2">
 									The Problem
 								</h1>
-								<p className="font-sans">
-									Integra is an hourly rental clinic for healthcare
-									professionals, helping them save time and money managing
-									rooms. Their scheduling was mostly manual in spreadsheets,
-									which worked for a single space but broke down across multiple
-									locations and booking states (paid, executed, cancelled,
-									etc.). They needed to avoid human mistakes, double-bookings,
-									and time wasted in back-and-forth communication with
-									professionals and backoffice.
-								</p>
+								<JustifiedText
+									className="font-sans"
+									text="Integra is an hourly rental clinic for healthcare professionals, helping them save time and money managing rooms. Their scheduling was mostly manual in spreadsheets, which worked for a single space but broke down across multiple locations and booking states (paid, executed, cancelled, etc.). They needed to avoid human mistakes, double-bookings, and time wasted in back-and-forth communication with professionals and backoffice."
+								/>
 							</div>
 
 							<div className="mt-8 section opacity-0">
@@ -218,22 +212,26 @@ const IntegraPage: React.FC = () => {
 									An integrated web app to manage scheduling, payments,
 									professional registers and space availability through two main
 									views:
-									<ul className="mt-3 flex gap-8 px-8 py-2 ">
-										<li className="flex-1">
-											<b>Backoffice (Recepcionists) vision</b> → shows all
-											spaces and their schedules, letting staff create, edit,
-											cancel, and mark executions and payments, as well as
-											manage professionals in the database.{" "}
-										</li>
+									<div className="mt-4 flex gap-12 justify-center py-2 ">
+										<div className="flex-1 max-w-[380px]">
+											<JustifiedText>
+												<b>Backoffice (Recepcionists) vision</b> → shows all
+												spaces and their schedules, letting staff create, edit,
+												cancel, and mark executions and payments, as well as
+												manage professionals in the database.{" "}
+											</JustifiedText>
+										</div>
 
-										<li className="flex-1">
-											<b>Healthcare Professional Vision</b> → shows available
-											time slots across spaces without exposing other
-											professionals’ details, allowing users to book, cancel,
-											reschedule, and review their payments and past
-											appointments.
-										</li>
-									</ul>
+										<div className="flex-1 max-w-[380px]">
+											<JustifiedText>
+												<b>Healthcare Professional Vision</b> → shows available
+												time slots across spaces without exposing other
+												professionals’ details, allowing users to book, cancel,
+												reschedule, and review their payments and past
+												appointments.
+											</JustifiedText>
+										</div>
+									</div>
 								</p>
 							</div>
 
@@ -241,14 +239,14 @@ const IntegraPage: React.FC = () => {
 								<h1 className="font-display tracking-tighter mb-2 text-[44px]">
 									The Architecture
 								</h1>
-								<p className="font-sans">
+								<JustifiedText className="font-sans">
 									this project needs to be fast and with good UX because{" "}
 									<b>
 										the professionals need to focus in their patients and not in
 										managing a scheduling software.
 									</b>{" "}
 									Based on that we decide to opt for the following technologies:
-								</p>
+								</JustifiedText>
 								<div className="grid  grid-cols-2">
 									<motion.div
 										animate={{
@@ -292,31 +290,30 @@ const IntegraPage: React.FC = () => {
 										<style>{`.react-flow__attribution { display: none !important; }`}</style>
 									</motion.div>
 									<div className="mt-12 flex flex-col gap-3 font-sans">
-										<p>
+										<JustifiedText>
 											<b>MongoDB</b> was the choice for databases for
-											fast-schema flexiblity and faster queries for time based
+											fast-schema flexibility and faster queries for time based
 											data, with aggregation pipelines to solve{" "}
 											<code>join</code> situations.
-										</p>
-										<p>
-											<b>Golang</b> was the choice for generating backend for
-											being a solid, time-proof language that has good
-											performance and updates that are retrocompatible, unlike
-											Node.js distributions.{" "}
-										</p>
-										<p>
-											<b>Not only REST but Websockets was needed</b> so the
-											users can schedule and see data in realtime, this prevents
-											race-conditions and gives a better experience to the
-											users, as they can see available slots in realtime.
-										</p>
-										<p>
+										</JustifiedText>
+										<JustifiedText>
+											<b>Golang</b> was the choice for the backend for being a
+											solid, time-proof language with good performance and
+											retrocompatible updates, unlike Node.js distributions.
+										</JustifiedText>
+										<JustifiedText>
+											<b>Not only REST but WebSockets was needed</b> so users
+											can schedule and see data in realtime — this prevents
+											race-conditions and gives a better experience as they can
+											see available slots in realtime in the current panel.
+										</JustifiedText>
+										<JustifiedText>
 											<b>Svelte</b> was the choice for frontend for being a
 											reactive framework that is very fast, good DX, performant
-											and very good to integrate with realtime application,
-											mostly chosen for fast-delivery (less boilerplates)
-											frontends
-										</p>
+											and very good to integrate with realtime applications,
+											mostly chosen for fast-delivery (less boilerplate)
+											frontends.
+										</JustifiedText>
 									</div>
 								</div>
 							</div>
@@ -324,17 +321,17 @@ const IntegraPage: React.FC = () => {
 								<h1 className="font-display tracking-tighter text-[44px] mb-2">
 									Solution Highlights
 								</h1>
-								<div className="grid mt-4 grid-cols-[1fr_1.25fr] gap-8 items-center">
+								<div className="grid mt-4 grid-cols-[1fr_1.25fr] font-sans gap-8 items-center">
 									<div>
 										<h2 className="font-display tracking-tighter font-medium text-[28px]">
 											One view for everything.
 										</h2>
-										<p className="font-sans">
+										<JustifiedText className="font-sans">
 											Users can manage appointments, payments, and schedules in
 											a single view, avoiding page switching and cognitive
 											overhead, preventing lines and communication with
 											professionals without <i>loading</i> breaks.
-										</p>
+										</JustifiedText>
 										<p className="mt-3">The technique for making this is:</p>
 										<ul className="mt-3 list-disc pl-4 flex flex-col gap-1">
 											<li>Drag and Drops to prevent cognitive overhead</li>
@@ -360,35 +357,24 @@ const IntegraPage: React.FC = () => {
 									Performance: 400ms to populate the whole system.
 								</h2>
 
-								<p className="mt-3 font-sans">
-									The system is made to prevent as much as possible all the
-									loading screens. I did that by making requests in parallel on
-									the client, with Goroutines and <code>fasthttp</code> in Go.
-									Insert and Update operations can take 200-300ms. Everything
-									can be processed in less than 1s. thanks to Golang performance
-									and MongoDB fast list, insert & update operations that
-									performs in nanosseconds to 1ms, all the time took is just
-									download, unzip (from gzip) and read the data.
-								</p>
+								<JustifiedText
+									className="mt-3 font-sans"
+									text="The system is made to prevent as much as possible all the loading screens. I did that by making requests in parallel on the client, with Goroutines and fasthttp in Go. Insert and Update operations can take 200-300ms. Everything can be processed in less than 1s. thanks to Golang performance and MongoDB fast list, insert & update operations that performs in nanosseconds to 1ms, all the time took is just download, unzip (from gzip) and read the data."
+								/>
 
 								<div className="grid mt-6 grid-cols-[1fr_1.1fr] gap-8 items-center mt-12">
 									<div className="">
 										<h2 className="font-display tracking-tighter font-medium text-[28px] ">
 											Maintenance Heaven
 										</h2>
-										<p className="mt-3 font-sans">
-											Everything is documented. Storybook for components and OAS
-											(OpenAPI Specification) alongside with Stoplight Elements
-											for managing and retrieving all the API Documentation,
-											with edge-cases to provide top-notch documentation for an
-											amazing and future-proof DX.
-										</p>
-										<p className="mt-3 font-sans">
-											One of the most important things for this project is to be
-											maintainable because as an ERP, companies changes all the
-											time, from simple features from strategic decisions, every
-											decision can also be changed in the software.
-										</p>
+										<JustifiedText
+											className="mt-3 font-sans"
+											text="Everything is documented. Storybook for components and OAS (OpenAPI Specification) alongside with Stoplight Elements for managing and retrieving all the API Documentation, with edge-cases to provide top-notch documentation for an amazing and future-proof DX."
+										/>
+										<JustifiedText
+											className="mt-3 font-sans"
+											text="One of the most important things for this project is to be maintainable because as an ERP, companies changes all the time, from simple features from strategic decisions, every decision can also be changed in the software."
+										/>
 									</div>
 									<motion.img
 										src="/integra_docs.avif"
@@ -489,21 +475,13 @@ const IntegraPage: React.FC = () => {
 									Future Improvements
 								</h1>
 								<div className="font-sans">
-									<p>
-										The next step is to evolve the platform from a scheduling
-										tool into a daily operating system for professionals - and
-										eventually, an intelligent system that reduces manual work
-										to near zero.
-									</p>
+									<JustifiedText text="The next step is to evolve the platform from a scheduling tool into a daily operating system for professionals - and eventually, an intelligent system that reduces manual work to near zero." />
 									<div className="grid grid-cols-2 gap-10 mt-3">
 										<div>
 											<h3 className="font-display tracking-tighter text-[22px] font-semibold mt-3">
 												Professional Experience Upgrade (Improves UX)
 											</h3>
-											<p>
-												Transform the product into a tool professionals rely on
-												daily, not just occasionally.
-											</p>
+											<JustifiedText text="Transform the product into a tool professionals rely on daily, not just occasionally." />
 											<ul className="space-y-1.5 list-disc pl-5 mt-4">
 												<li>
 													Personal analytics dashboard with revenue
@@ -513,19 +491,16 @@ const IntegraPage: React.FC = () => {
 												<li>Calendar sync (Google Calendar, iCal)</li>
 												<li>Mobile-first experience / PWA</li>
 											</ul>
-											<p className="mt-3">
-												The goal is to increase engagement and make the platform
-												part of the professional’s daily workflow.
-											</p>
+											<JustifiedText
+												className="mt-3"
+												text="The goal is to increase engagement and make the platform part of the professional's daily workflow."
+											/>
 										</div>
 										<div>
 											<h3 className="font-display tracking-tighter text-[22px] font-semibold mt-3">
 												Intelligent Scheduling Layer (AI Integration)
 											</h3>
-											<p>
-												Move beyond traditional interfaces by introducing
-												intent-based interactions and automation.
-											</p>
+											<JustifiedText text="Move beyond traditional interfaces by introducing intent-based interactions and automation." />
 
 											<ul className="space-y-1.5 list-disc pl-5 mt-4">
 												<li>
@@ -541,10 +516,10 @@ const IntegraPage: React.FC = () => {
 												<li>AI/Statistic chance of no-show or cancelling.</li>
 											</ul>
 
-											<p className="mt-3">
-												The goal is to reduce manual work to use AI to automate
-												tasks and provide insights.
-											</p>
+											<JustifiedText
+												className="mt-3"
+												text="The goal is to reduce manual work to use AI to automate tasks and provide insights."
+											/>
 										</div>
 									</div>
 								</div>
