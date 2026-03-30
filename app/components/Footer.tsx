@@ -4,7 +4,7 @@ const Footer: React.FC = () => {
 	return (
 		<footer>
 			<div className="w-full bg-background border-t border-white/20 mt-12 py-6 flex justify-center items-center ">
-				<div className="max-w-[940px] w-full">
+				<div className="px-10 lg:px-0 max-w-[940px] w-full">
 					<div className="w-fit">
 						<div className="size-10 mb-2 rounded border border-white/20 flex items-center justify-center bg-white/5">
 							<Logo className="size-5" />

@@ -160,7 +160,7 @@ const IntegraPage: React.FC = () => {
 				<div id="smooth-content">
 					<div className="flex flex-col items-center">
 						<Grid height={gridHeight} />
-						<div className="mt-24 max-w-[940px] w-full">
+						<div className="mt-24 px-10 lg:px-0 max-w-[940px] w-full">
 							<div className="flex flex-col gap-3 items-center mb-6">
 								<motion.div
 									initial={{
@@ -178,7 +178,7 @@ const IntegraPage: React.FC = () => {
 								>
 									<IntegraLogo className="w-36" />
 								</motion.div>
-								<h1 className="animated-text font-display tracking-tighter relative font-medium text-[56px]">
+								<h1 className="animated-text font-display tracking-tighter relative font-medium text-[40px] lg:text-[56px]">
 									Project Study Case
 								</h1>
 								<motion.div
@@ -209,10 +209,12 @@ const IntegraPage: React.FC = () => {
 									The Proposal
 								</h1>
 								<p className="font-sans">
-									An integrated web app to manage scheduling, payments,
-									professional registers and space availability through two main
-									views:
-									<div className="mt-4 flex gap-12 justify-center py-2 ">
+									<JustifiedText>
+										An integrated web app to manage scheduling, payments,
+										professional registers and space availability through two
+										main views:
+									</JustifiedText>
+									<div className="mt-4 flex md:flex-row flex-col items-center lg:items-start gap-4 md:gap-12 justify-center py-2 ">
 										<div className="flex-1 max-w-[380px]">
 											<JustifiedText>
 												<b>Backoffice (Recepcionists) vision</b> → shows all
@@ -247,7 +249,7 @@ const IntegraPage: React.FC = () => {
 									</b>{" "}
 									Based on that we decide to opt for the following technologies:
 								</JustifiedText>
-								<div className="grid  grid-cols-2">
+								<div className="flex flex-col mb-6 md:mb-0 md:grid md:grid-cols-2">
 									<motion.div
 										animate={{
 											opacity: 1,
@@ -321,7 +323,7 @@ const IntegraPage: React.FC = () => {
 								<h1 className="font-display tracking-tighter text-[44px] mb-2">
 									Solution Highlights
 								</h1>
-								<div className="grid mt-4 grid-cols-[1fr_1.25fr] font-sans gap-8 items-center">
+								<div className="flex flex-col md:grid mt-4 md:grid-cols-[1fr_1.25fr] font-sans gap-8 items-center">
 									<div>
 										<h2 className="font-display tracking-tighter font-medium text-[28px]">
 											One view for everything.
@@ -362,7 +364,7 @@ const IntegraPage: React.FC = () => {
 									text="The system is made to prevent as much as possible all the loading screens. I did that by making requests in parallel on the client, with Goroutines and fasthttp in Go. Insert and Update operations can take 200-300ms. Everything can be processed in less than 1s. thanks to Golang performance and MongoDB fast list, insert & update operations that performs in nanosseconds to 1ms, all the time took is just download, unzip (from gzip) and read the data."
 								/>
 
-								<div className="grid mt-6 grid-cols-[1fr_1.1fr] gap-8 items-center mt-12">
+								<div className="flex flex-col md:grid mt-6 md:grid-cols-[1fr_1.1fr] gap-8 items-center mt-12">
 									<div className="">
 										<h2 className="font-display tracking-tighter font-medium text-[28px] ">
 											Maintenance Heaven
@@ -390,7 +392,7 @@ const IntegraPage: React.FC = () => {
 								<h1 className="font-display tracking-tighter text-[44px] mb-2">
 									Results
 								</h1>
-								<div className="grid mt-4 font-sans grid-cols-2 gap-10">
+								<div className="md:grid mt-4 font-sans flex flex-col md:grid-cols-2 gap-10">
 									<div>
 										<h3 className="font-display items-center flex leading-[5px] gap-2 text-[22px] font-semibold tracking-tighter">
 											<RiCheckboxCircleFill className="size-[20px]" />
@@ -476,7 +478,7 @@ const IntegraPage: React.FC = () => {
 								</h1>
 								<div className="font-sans">
 									<JustifiedText text="The next step is to evolve the platform from a scheduling tool into a daily operating system for professionals - and eventually, an intelligent system that reduces manual work to near zero." />
-									<div className="grid grid-cols-2 gap-10 mt-3">
+									<div className="flex flex-col md:grid md:grid-cols-2 gap-10 mt-3">
 										<div>
 											<h3 className="font-display tracking-tighter text-[22px] font-semibold mt-3">
 												Professional Experience Upgrade (Improves UX)

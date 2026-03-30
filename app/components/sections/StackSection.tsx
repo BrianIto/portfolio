@@ -114,14 +114,12 @@ const StackSection: React.FC = () => {
 								<span className="font-semibold">rule them all</span>
 							</ContainerWithTooltip>
 						</h2>
-						<JustifiedText
-							width={450}
-							text="
+						<JustifiedText>
 							I craft well-written, useful and documented components in any
 							JavaScript Front-end Framework, from Vanilla Javascript to SSR
 							Next.js and SvelteKit. But don't believe my words, believe my code
-							by checking this website repository and storybook."
-						></JustifiedText>
+							by checking this website repository and storybook.
+						</JustifiedText>
 					</div>
 					{frameworks.map((framework, i) => (
 						<motion.div
@@ -145,7 +143,7 @@ const StackSection: React.FC = () => {
 								tooltipLabel={
 									<div>
 										<p className="flex flex-col font-sans font-semibold text-[13px]">
-											<span className="flex-1">{framework.name}</span>
+											<span className="flex-1 font-sans">{framework.name}</span>
 											<span className="opacity-70">
 												{framework.years}y exp.
 											</span>
