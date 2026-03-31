@@ -93,7 +93,6 @@ const ProjectsSection: React.FC = () => {
 							{project.title}
 						</h2>
 						<JustifiedText
-							width={250}
 							text={project.description}
 							className="font-sans tracking-tight text-[14px] text-[#BFBFBF]"
 						></JustifiedText>
