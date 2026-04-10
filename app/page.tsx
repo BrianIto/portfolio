@@ -59,7 +59,7 @@ export default function Home() {
 							/>
 							<StackSection />
 							<ProjectsSection />
-							<PricingSection />
+							<PricingSection onClickPrice={onClickPrimary} />
 							<ContactSection />
 						</div>
 						<Footer />
