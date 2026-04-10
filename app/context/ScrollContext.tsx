@@ -3,8 +3,15 @@
 import type { ScrollSmoother } from "gsap/ScrollSmoother";
 import { createContext, useContext, type RefObject } from "react";
 
+export interface SectionInfo {
+	name: string;
+	icon: React.ComponentType<any>;
+}
+
 interface ScrollContextType {
 	scrollSmootherRef: RefObject<ScrollSmoother | null>;
+	currentSection: SectionInfo | null;
+	setCurrentSection: (section: SectionInfo | null) => void;
 }
 
 export const ScrollContext = createContext<ScrollContextType | null>(null);

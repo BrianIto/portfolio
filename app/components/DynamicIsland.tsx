@@ -11,10 +11,11 @@ import {
 } from "@remixicon/react";
 import gsap from "gsap";
 import { AnimatePresence, motion, stagger } from "motion/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/utils/cn";
 import { useScroll } from "../context/ScrollContext";
 import ListItem from "./DynamicIsland.ListItem";
+import TextChangeAnimate from "./TextChangeAnimate";
 
 // Navigation mapping for all sections
 const navigationMap: Record<string, string> = {
@@ -32,11 +33,12 @@ const navigationMap: Record<string, string> = {
 
 const DynamicIsland: React.FC = () => {
 	const [open, setOpen] = useState(false);
-	const { scrollSmootherRef } = useScroll();
+	const { scrollSmootherRef, currentSection } = useScroll();
+	const iconRef = useRef<HTMLDivElement>(null);
 
 	const variants = {
 		open: {
-			width: "calc(var(--spacing) * 64)",
+			width: "calc(var(--spacing) * 66)",
 			minHeight: "calc(var(--spacing) * 12)",
 			transition: {
 				when: "beforeChildren",
@@ -44,7 +46,7 @@ const DynamicIsland: React.FC = () => {
 			},
 		},
 		closed: {
-			width: "calc(var(--spacing) * 50)",
+			width: "calc(var(--spacing) * 58)",
 			minHeight: "calc(var(--spacing) * 6)",
 			transition: {
 				when: "afterChildren",
@@ -157,6 +159,9 @@ const DynamicIsland: React.FC = () => {
 		});
 	}, []);
 
+	// Get current section icon
+	const CurrentIcon = currentSection?.icon || RiHome2Line;
+
 	return (
 		<>
 			<AnimatePresence>
@@ -191,12 +196,18 @@ const DynamicIsland: React.FC = () => {
 					)}
 				>
 					<motion.div className="w-full h-[24px] flex items-center">
-						<motion.div className="rounded-full duration-300 w-5 flex items-center justify-center h-5 bg-transparent">
-							<RiHome2Line className="w-3.5  text-[#AEAEAE]" />
+						<motion.div
+							ref={iconRef}
+							className="rounded-full duration-300 w-5 flex items-center justify-center h-5 bg-transparent"
+						>
+							<CurrentIcon className="w-3.5  text-[#AEAEAE]" />
 						</motion.div>
-						<motion.div className="flex-1 px-2 flex justify-center">
-							Homepage
-						</motion.div>
+						<AnimatePresence mode="wait">
+							<TextChangeAnimate
+								key={currentSection?.name || "Homepage"}
+								text={currentSection?.name || "Homepage"}
+							/>
+						</AnimatePresence>
 
 						<div className="flex gap-1">
 							<div className="-ml-5 rounded opacity-50 text-[12px] bg-white/5 w-5 border border-white/10">
