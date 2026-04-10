@@ -154,7 +154,13 @@ const IntegraPage: React.FC = () => {
 	}, []);
 
 	return (
-		<ScrollContext.Provider value={{ scrollSmootherRef }}>
+		<ScrollContext.Provider
+			value={{
+				scrollSmootherRef,
+				currentSection: null,
+				setCurrentSection: () => {},
+			}}
+		>
 			<DynamicIsland />
 			<div id="smooth-wrapper">
 				<div id="smooth-content">
