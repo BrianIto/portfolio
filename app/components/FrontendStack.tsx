@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { useWindowDimensions } from "@/hooks/useWindowDimensions";
 import ContainerWithTooltip from "./ContainerWithTooltip";
 import Angular from "./icons/Angular";
 import NextJSIcon from "./icons/Nextjs";
@@ -8,6 +9,7 @@ import TailwindCSS from "./icons/Tailwindcss";
 import { JustifiedText } from "./JustifiedText";
 
 const FrontendStack = () => {
+	const { isMobile, width } = useWindowDimensions();
 	const frameworks = [
 		{
 			icon: Svelte,
@@ -110,7 +112,7 @@ const FrontendStack = () => {
 								/>
 							</div>
 						}
-						position="right"
+						position={isMobile ? "top" : "right"}
 						tooltipClass="max-w-[250px]"
 					>
 						<motion.div className="flex gap-[20px] ">

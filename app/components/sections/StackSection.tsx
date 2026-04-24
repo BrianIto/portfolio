@@ -3,7 +3,6 @@ import { RiArrowDownLine } from "@remixicon/react";
 import gsap from "gsap";
 import { motion } from "motion/react";
 import { useRef } from "react";
-import ContainerWithTooltip from "../ContainerWithTooltip";
 import FrontendStack from "../FrontendStack";
 import Angular from "../icons/Angular";
 import NextJSIcon from "../icons/Nextjs";
@@ -12,7 +11,6 @@ import React from "../icons/React";
 import Storybook from "../icons/Storybook";
 import Svelte from "../icons/Svelte";
 import TailwindCSS from "../icons/Tailwindcss";
-import { JustifiedText } from "../JustifiedText";
 
 const StackSection: React.FC = () => {
 	const orbitContainer = useRef<HTMLDivElement>(null);
@@ -44,13 +42,13 @@ const StackSection: React.FC = () => {
 			id="stack-section"
 			className="md:max-w-[700px] lg:max-w-[940px] mt-12 flex items-center flex-col"
 		>
-			<h1 className="font-display w-fit text-center md:text-left relative tracking-tighter text-[#999] text-[36px] md:text-[44px] lg:text-[60px]">
+			<h1 className="font-display text-wrap md:w-fit text-center flex gap-x-2 justify-center max-w-[90vw] flex-wrap md:text-left relative tracking-tighter text-[#999] text-[36px] md:text-[44px] lg:text-[60px]">
 				Stack for{" "}
 				<button className="text-white inline-flex items-center justify-center">
 					frontend development &nbsp;{" "}
 					<RiArrowDownLine className="size-5 lg:size-9" />
 				</button>
-				<div className="text-[18px] lg:text-[20px] tracking-tight md:-mt-4 text-white md:absolute right-0">
+				<div className="text-[18px] lg:text-[20px] tracking-tight md:-mt-4 md:-bottom-2.5 text-white md:absolute right-0">
 					Click to change
 				</div>
 			</h1>
