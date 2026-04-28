@@ -205,15 +205,13 @@ const IntegraPage: React.FC = () => {
 									The Problem
 								</h1>
 								<JustifiedText className="font-sans">
-									Every developer has been there: you finish a productive
-									session, stage your files, and then freeze at the commit
-									message. Do you write one big vague message? Split it somehow?
-									Remember which files changed what? For solo developers and
-									teams alike, commit hygiene breaks down fast. The problems
-									compound in three ways. Histories become unreadable: a mix of
-									complete <code>fix stuff</code>, <code>wip</code>, and
-									<code>update</code> that makes git log <i>useless</i> for
-									debugging or reviewing.
+									<b>A poor documented code leads to abandoned code.</b> In fast
+									paced environment documentation is not very-much a priority,
+									this leads to poor written commits and messages, when it
+									scales histories become unreadable: a mix of complete{" "}
+									<code>fix stuff</code>, <code>wip</code>, and{" "}
+									<code>updates</code> that makes <code>git log</code>{" "}
+									<i>useless</i> for debugging or reviewing.
 								</JustifiedText>
 
 								<JustifiedText className="font-sans mt-4" text="">
@@ -352,23 +350,40 @@ const IntegraPage: React.FC = () => {
 								<div className="flex flex-col md:grid mt-4 md:grid-cols-[1fr_1.25fr] font-sans gap-8 items-center">
 									<div>
 										<h2 className="font-display tracking-tighter font-medium text-[28px]">
-											One view for everything.
+											Big Commits? We got you.
 										</h2>
 										<JustifiedText className="font-sans">
-											Users can manage appointments, payments, and schedules in
-											a single view, avoiding page switching and cognitive
-											overhead, preventing lines and communication with
-											professionals without <i>loading</i> breaks.
+											By analyzing the diff's structure and content, the tool
+											cancelling automatically splits large, multi-purpose
+											changes into multiple atomic commits. This ensures that
+											even complex changes are broken down into manageable,
+											reviewable pieces that maintain a clean and informative
+											git history.
 										</JustifiedText>
-										<p className="mt-3">The technique for making this is:</p>
+										<p className="mt-3">This technique can:</p>
 										<ul className="mt-3 list-disc pl-4 flex flex-col gap-1">
-											<li>Drag and Drops to prevent cognitive overhead</li>
+											<li>Make Code Reviews much easier to do</li>
 											<li>
-												All the interactions except payment can be done by mouse
+												Enable bisecting to work properly, making debugging much
+												easier
 											</li>
-											<li>Right-click menu to solve edge cases easily</li>
-											<li>Three-clicks to anything.</li>
+											<li>
+												Make rollbacks less intensive preventing cherry-picks
+											</li>
+											<li>
+												Allow to easily identify the intent of each change,
+												making the git history more readable and informative
+											</li>
 										</ul>
+
+										<h2 className="font-display tracking-tighter font-medium text-[28px] mt-3">
+											Best Practices everywhere
+										</h2>
+
+										<JustifiedText
+											className="mt-3 font-sans"
+											text="Atomic commits, semantic commits, gitmoji, and a priority system for mixed-intent changes are all enforced by the structured prompt, ensuring a clean, consistent, and informative git history without relying on user discipline."
+										/>
 									</div>
 									<div>
 										<motion.img
@@ -376,42 +391,21 @@ const IntegraPage: React.FC = () => {
 												scale: 1.02,
 												filter: "grayscale(0)",
 											}}
-											src="/integra_scheduling_view.avif"
+											src="/commitsense.avif"
 											className="rounded-lg grayscale border border-white/20 "
 										/>
 									</div>
 								</div>
-								<h2 className="font-display tracking-tighter font-medium text-[28px] mt-12">
-									Performance: 400ms to populate the whole system.
-								</h2>
-
-								<JustifiedText
-									className="mt-3 font-sans"
-									text="The system is made to prevent as much as possible all the loading screens. I did that by making requests in parallel on the client, with Goroutines and fasthttp in Go. Insert and Update operations can take 200-300ms. Everything can be processed in less than 1s. thanks to Golang performance and MongoDB fast list, insert & update operations that performs in nanosseconds to 1ms, all the time took is just download, unzip (from gzip) and read the data."
-								/>
-
-								<div className="flex flex-col md:grid mt-6 md:grid-cols-[1fr_1.1fr] gap-8 items-center mt-12">
+								<div className="flex flex-col md:grid mt-6 md:grid-cols-[1fr] gap-8 items-center mt-7">
 									<div className="w-full lg:w-auto">
 										<h2 className="font-display tracking-tighter font-medium text-[28px] ">
-											Maintenance Heaven
+											Good Prompt = Cheaper Models
 										</h2>
 										<JustifiedText
 											className="mt-3 font-sans"
-											text="Everything is documented. Storybook for components and OAS (OpenAPI Specification) alongside with Stoplight Elements for managing and retrieving all the API Documentation, with edge-cases to provide top-notch documentation for an amazing and future-proof DX."
-										/>
-										<JustifiedText
-											className="mt-3 font-sans"
-											text="One of the most important things for this project is to be maintainable because as an ERP, companies changes all the time, from simple features from strategic decisions, every decision can also be changed in the software."
+											text="The whole project runs on OpenAI GPT-4.1 Models, in low capacity. (the cheapest model at the time) with a very structured prompt that enforces the output format and rules, making it accurate and consistent without needing expensive models or fine-tuning. This makes it accessible and efficient, proving that with the right prompt engineering, you can achieve great results even with limited resources."
 										/>
 									</div>
-									<motion.img
-										src="/integra_docs.avif"
-										whileHover={{
-											scale: 1.05,
-											filter: "grayscale(0)",
-										}}
-										className="rounded-lg grayscale duration-200 border border-white/20 "
-									/>
 								</div>
 							</div>
 							<div className="mt-8 section opacity-0">
@@ -422,20 +416,20 @@ const IntegraPage: React.FC = () => {
 									<div>
 										<h3 className="font-display items-center flex leading-[5px] gap-2 text-[22px] font-semibold tracking-tighter">
 											<RiCheckboxCircleFill className="size-[20px]" />
-											No lines, no chaos.
+											No More Messy Histories
 										</h3>
 										<ul className="space-y-1.5 list-disc pl-5 mt-4">
 											<li>
-												Eliminated waiting lines caused by scheduling errors and
-												delays.
+												Vague or inconsistent commit messages are reduced to 0
+												in projects.
 											</li>
 											<li>
-												Removed front-desk bottlenecks by enabling instant
-												scheduling and updates.
+												Things done that can be forgotten between a commit and
+												another doesn't exists anymore.
 											</li>
 											<li>
-												Cut unnecessary back-and-forth communication to near
-												zero.
+												Even large, multi-purpose commits are automatically
+												split into atomic, logically-grouped commits.
 											</li>
 										</ul>
 									</div>
@@ -443,17 +437,38 @@ const IntegraPage: React.FC = () => {
 									<div>
 										<h3 className="font-display items-center flex leading-[5px] gap-2 text-[22px] font-semibold tracking-tighter">
 											<RiCheckboxCircleFill className="size-[20px]" />
-											Bulletproof Scheduling
+											Consistent Best Practices
 										</h3>
 										<ul className="space-y-1.5 list-disc pl-5 mt-4">
-											<li>Zero double-bookings, even during peak usage.</li>
 											<li>
-												Real-time availability guarantees every visible slot is
-												valid and bookable.
+												Multiple practices in project (gimoji, semantic,
+												numbered) are reduced to a single pattern
 											</li>
 											<li>
-												Clear and enforced booking states eliminated operational
-												and financial inconsistencies.
+												Blaming and bisecting work properly, making debugging
+												much easier
+											</li>
+											<li>Reverting changes is easier and less error-prone.</li>
+										</ul>
+									</div>
+
+									<div>
+										<h3 className="font-display items-center flex leading-[5px] gap-2 text-[22px] font-semibold tracking-tighter">
+											<RiCheckboxCircleFill className="size-[20px]" />
+											No time waste by waiting
+										</h3>
+										<ul className="space-y-1.5 list-disc pl-5 mt-4">
+											<li>
+												Loading the prompt is faster than writing the commit
+												message.
+											</li>
+											<li>
+												The loading for the whole process is around 2-3 seconds,
+												in large commits.
+											</li>
+											<li>
+												By using the CLI, developers stay in flow and don't have
+												to context-switch to write commit messages
 											</li>
 										</ul>
 									</div>
@@ -461,38 +476,21 @@ const IntegraPage: React.FC = () => {
 									<div>
 										<h3 className="font-display items-center flex leading-[5px] gap-2 text-[22px] font-semibold tracking-tighter">
 											<RiCheckboxCircleFill className="size-[20px]" />
-											From Minutes to Seconds
-										</h3>
-										<ul className="space-y-1.5 list-disc pl-5 mt-4">
-											<li>Zero double-bookings, even during peak usage.</li>
-											<li>
-												Real-time availability guarantees every visible slot is
-												valid and bookable.
-											</li>
-											<li>
-												Clear and enforced booking states eliminated operational
-												and financial inconsistencies.
-											</li>
-										</ul>
-									</div>
-
-									<div>
-										<h3 className="font-display items-center flex leading-[5px] gap-2 text-[22px] font-semibold tracking-tighter">
-											<RiCheckboxCircleFill className="size-[20px]" />
-											Real Impact on the Ground
+											Code Quality and Team Collaboration
 										</h3>
 										<ul className="space-y-1.5 list-disc pl-5 mt-4">
 											<li>
-												Professionals no longer depend on reception, they
-												control their own schedules.
+												Code reviews are more effective with clear, atomic
+												commits.
 											</li>
 											<li>
-												Patients move through the clinic faster, with fewer
-												delays and friction.
+												Teams have a more consistent and informative git
+												history, improving the onboarding of new members
 											</li>
 											<li>
-												The clinic operates with a predictable, continuous flow
-												instead of interruptions and queues.
+												Overall code quality is improved as the commit history
+												becomes a reliable source of information about the
+												codebase's evolution.
 											</li>{" "}
 										</ul>
 									</div>
@@ -507,47 +505,40 @@ const IntegraPage: React.FC = () => {
 									<div className="flex flex-col md:grid md:grid-cols-2 gap-10 mt-3">
 										<div>
 											<h3 className="font-display tracking-tighter text-[22px] font-semibold mt-3">
-												Professional Experience Upgrade (Improves UX)
+												Reduce the Bundle Size
 											</h3>
-											<JustifiedText text="Transform the product into a tool professionals rely on daily, not just occasionally." />
+											<JustifiedText text="Bun ships the bun runtime alongside the binary making files bigger (csense has ~60mb in Linux). To fastest way of doing so is to move to a compiled language." />
 											<ul className="space-y-1.5 list-disc pl-5 mt-4">
 												<li>
-													Personal analytics dashboard with revenue
-													(weekly/monthly) and occupancy rate
+													<b>Rust</b> ships the same environment with ~2MB
+													executable
 												</li>
-												<li>One-click rebooking of past schedules</li>
-												<li>Calendar sync (Google Calendar, iCal)</li>
-												<li>Mobile-first experience / PWA</li>
+												<li>Reduces bundle-size by 97%</li>
+												<li>
+													Easier onboarding with <code>apt</code> or{" "}
+													<code>homebrew</code>{" "}
+												</li>
+												<li>
+													Rust is easier to maintain, but has a bigger learning
+													curve.
+												</li>
 											</ul>
-											<JustifiedText
-												className="mt-3"
-												text="The goal is to increase engagement and make the platform part of the professional's daily workflow."
-											/>
 										</div>
 										<div>
 											<h3 className="font-display tracking-tighter text-[22px] font-semibold mt-3">
-												Intelligent Scheduling Layer (AI Integration)
+												Local-First AI integration
 											</h3>
-											<JustifiedText text="Move beyond traditional interfaces by introducing intent-based interactions and automation." />
+											<JustifiedText text="With the evolution of local AIs (Kimi, Minimax, etc.) we should consider testing with an local LLM Models." />
 
 											<ul className="space-y-1.5 list-disc pl-5 mt-4">
 												<li>
-													<strong>AI-Assistant for Receptionists</strong>: A
-													real-time assistant to executing actions and answer
-													questions
+													Kimi, Minimax, Qwen and GLM can read code easily,
+													providing even more privacy.{" "}
 												</li>
-												<li>
-													Categorization & Auto-tagging of patterns in
-													appointments.{" "}
-												</li>
-												<li>Automate Dashboard creation charts with AI.</li>
-												<li>AI/Statistic chance of no-show or cancelling.</li>
+												<li>Responses without latency, pure TPS.</li>
+												<li>No trolls = Pure internal processing.</li>
+												<li>No skills or black magic for token saving.</li>
 											</ul>
-
-											<JustifiedText
-												className="mt-3"
-												text="The goal is to reduce manual work to use AI to automate tasks and provide insights."
-											/>
 										</div>
 									</div>
 								</div>

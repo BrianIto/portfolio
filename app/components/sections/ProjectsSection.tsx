@@ -5,8 +5,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useRef } from "react";
 import CommitsenseLogo from "../icons/CommitsenseLogo";
-import DLMRLogo from "../icons/DLMRLogo";
 import IntegraLogo from "../icons/IntegraLogo";
+import LashLogo from "../icons/LashLogo";
 import { JustifiedText } from "../JustifiedText";
 
 const projects = [
@@ -24,14 +24,15 @@ const projects = [
 		description:
 			"showcases AI Integration, LLMs, CLI creation, Prompt security and attention to detail.",
 		link: "Personal Project",
+		linkUrl: "/projects/commitsense",
 	},
 
 	{
-		icon: DLMRLogo,
-		title: "Payment Split made easy for Attorneys using DFS",
+		icon: LashLogo,
+		title: "Trading Terminal Platform + Social Layer",
 		description:
-			"Showcase good control of algorithms (Depth-First Search), relational databases, finances control and transactional data.",
-		link: "Authentication Gated Web App",
+			"Web3 Solana Trading Terminal Platform. Showcase Realtime & Data-heavy visualizations",
+		link: "Live in May 2026",
 	},
 ];
 const ProjectsSection: React.FC = () => {
