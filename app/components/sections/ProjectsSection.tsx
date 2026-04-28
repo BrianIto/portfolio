@@ -33,6 +33,7 @@ const projects = [
 		description:
 			"Web3 Solana Trading Terminal Platform. Showcase Realtime & Data-heavy visualizations",
 		link: "Live in May 2026",
+		linkUrl: "/projects/lash",
 	},
 ];
 const ProjectsSection: React.FC = () => {
