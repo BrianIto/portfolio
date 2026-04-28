@@ -1,4 +1,6 @@
-const LashLogo: React.FC = (props) => {
+import type { SVGProps } from "react";
+
+const LashLogo: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 	return (
 		<svg
 			{...props}
