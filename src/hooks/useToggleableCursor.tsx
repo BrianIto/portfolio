@@ -20,12 +20,15 @@ const useToggleableCursor = (initialEnabled: boolean = true) => {
       * { cursor: none !important; }
       #retro-cursor-outer {
         position: fixed;
-        width: 26px; height: 26px;
+        width: 40px; height: 40px;
         border: 1.5px solid rgba(255,255,255,0.55);
         pointer-events: none;
         z-index: 999999;
+        left: -100px;
+        top: -100px;
         transform: translate(-50%, -50%);
         transition: width 0.18s ease, height 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+        will-change: left, top;
       }
       #retro-cursor-outer::before, #retro-cursor-outer::after {
         content: '';
@@ -48,8 +51,11 @@ const useToggleableCursor = (initialEnabled: boolean = true) => {
         background: rgba(255,255,255,0.9);
         pointer-events: none;
         z-index: 999999;
+        left: -100px;
+        top: -100px;
         transform: translate(-50%, -50%);
         box-shadow: 0 0 6px rgba(255,255,255,0.5);
+        will-change: left, top;
       }
     `;
 		document.head.appendChild(style);
@@ -61,25 +67,19 @@ const useToggleableCursor = (initialEnabled: boolean = true) => {
 		document.body.appendChild(outer);
 		document.body.appendChild(inner);
 
-		let mouseX = -100,
-			mouseY = -100;
-		let outerX = -100,
-			outerY = -100;
+		let mouseX = -100;
+		let mouseY = -100;
+		let outerX = -100;
+		let outerY = -100;
+		let hasPointerPosition = false;
+		let isOverInteractive = false;
+		let positionDirty = true;
 
-		const onMove = (e: MouseEvent) => {
-			mouseX = e.clientX;
-			mouseY = e.clientY;
-			inner.style.left = mouseX + "px";
-			inner.style.top = mouseY + "px";
+		const applyCursorTheme = (interactive: boolean) => {
+			if (interactive === isOverInteractive) return;
+			isOverInteractive = interactive;
 
-			const el = document.elementFromPoint(mouseX, mouseY);
-			const isInteractive =
-				el &&
-				(el.closest("a") ||
-					el.closest("button") ||
-					el.closest("input") ||
-					el.closest("textarea"));
-			if (isInteractive) {
+			if (interactive) {
 				outer.style.width = "38px";
 				outer.style.height = "38px";
 				outer.style.borderColor = "#FFBA5AAA";
@@ -96,15 +96,41 @@ const useToggleableCursor = (initialEnabled: boolean = true) => {
 			}
 		};
 
+		const onMove = (e: MouseEvent) => {
+			mouseX = e.clientX;
+			mouseY = e.clientY;
+			if (!hasPointerPosition) {
+				outerX = mouseX;
+				outerY = mouseY;
+				hasPointerPosition = true;
+			}
+			positionDirty = true;
+
+			const target = e.target instanceof Element ? e.target : null;
+			applyCursorTheme(
+				Boolean(
+					target?.closest("a, button, input, textarea, select, [role='button']"),
+				),
+			);
+		};
+
 		let raf: number | undefined;
 		const animate = () => {
-			outerX += (mouseX - outerX) * 0.75;
-			outerY += (mouseY - outerY) * 0.13;
-			outer.style.left = outerX + "px";
-			outer.style.top = outerY + "px";
+			if (hasPointerPosition) {
+				if (positionDirty) {
+					inner.style.left = `${mouseX}px`;
+					inner.style.top = `${mouseY}px`;
+					positionDirty = false;
+				}
+
+				outerX += (mouseX - outerX) * 0.42;
+				outerY += (mouseY - outerY) * 0.42;
+				outer.style.left = `${outerX}px`;
+				outer.style.top = `${outerY}px`;
+			}
 			raf = requestAnimationFrame(animate);
 		};
-		window.addEventListener("mousemove", onMove);
+		window.addEventListener("mousemove", onMove, { passive: true });
 		animate();
 
 		return () => {

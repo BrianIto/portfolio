@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
 
 interface Props {
@@ -10,93 +10,79 @@ interface Props {
 
 const Grid: React.FC<Props> = ({ height }) => {
 	const { isMobile } = useWindowDimensions();
+	const squareSize = isMobile ? 16 : 56;
+	const rowCount = Math.ceil(Math.max(height, 0) / squareSize);
 
-	const SQUARE_SIZE = useMemo(() => (isMobile ? 16 : 56), [isMobile]);
+	const rows = useMemo(
+		() => Array.from({ length: rowCount }, (_, i) => i),
+		[rowCount],
+	);
 
 	return (
-		<div className="absolute w-full z-[-1]">
+		<div className="pointer-events-none absolute w-full z-[-1]" style={{ height }}>
 			{/** Left Side */}
 			<motion.div
 				className="w-0.25 bg-white/10 absolute"
-				initial={{ height: 0, left: SQUARE_SIZE }}
-				animate={{ height, left: SQUARE_SIZE }}
-				transition={{
-					duration: 0.9,
-					ease: "easeOut",
-				}}
-				style={{ height }}
-			></motion.div>
+				initial={{ scaleY: 0, left: squareSize }}
+				animate={{ scaleY: 1, left: squareSize }}
+				transition={{ duration: 0.9, ease: "easeOut" }}
+				style={{ height, transformOrigin: "top" }}
+			/>
 			<motion.div
-				className="w-0.25  bg-white/10 absolute"
-				initial={{ height: 0, left: SQUARE_SIZE * 2 }}
-				animate={{ height, left: SQUARE_SIZE * 2 }}
-				transition={{
-					duration: 0.9,
-					ease: "easeOut",
-				}}
-				style={{ height }}
-			></motion.div>
-			{new Array(Math.floor(height / SQUARE_SIZE)).fill(0).map((_, i) => (
+				className="w-0.25 bg-white/10 absolute"
+				initial={{ scaleY: 0, left: squareSize * 2 }}
+				animate={{ scaleY: 1, left: squareSize * 2 }}
+				transition={{ duration: 0.9, ease: "easeOut" }}
+				style={{ height, transformOrigin: "top" }}
+			/>
+			{rows.map((i) => (
 				<motion.div
-					key={i}
-					className="w-44 left-0 top-8 h-0.25 absolute bg-white/10"
-					initial={{ width: 0 }}
-					animate={{
-						width: isMobile ? (i % 2 ? 44 : 56) : i % 2 ? 144 : 176,
-					}}
-					transition={{
-						delay: 0.01 + i * 0.03,
-						duration: 0.3,
-						ease: "easeOut",
-					}}
+					key={`left-${i}`}
+					className="left-0 top-8 h-0.25 absolute bg-white/10"
+					initial={{ scaleX: 0 }}
+					whileInView={{ scaleX: 1 }}
+					viewport={{ once: true, margin: "150px" }}
+					transition={{ duration: 0.25, ease: "easeOut" }}
 					style={{
-						top: 8 * 4 + SQUARE_SIZE * i,
+						top: 32 + squareSize * i,
+						width: isMobile ? (i % 2 ? 44 : 56) : i % 2 ? 144 : 176,
+						transformOrigin: "left",
 					}}
-				></motion.div>
+				/>
 			))}
 
 			{/** Right Side */}
-
 			<motion.div
 				className="w-0.25 bg-white/10 absolute"
-				initial={{ height: 0, right: SQUARE_SIZE }}
-				animate={{ height, right: SQUARE_SIZE }}
-				transition={{
-					duration: 0.9,
-					ease: "easeOut",
-				}}
-				style={{ height }}
-			></motion.div>
+				initial={{ scaleY: 0, right: squareSize }}
+				animate={{ scaleY: 1, right: squareSize }}
+				transition={{ duration: 0.9, ease: "easeOut" }}
+				style={{ height, transformOrigin: "top" }}
+			/>
 			<motion.div
-				className="w-0.25  bg-white/10 absolute"
-				initial={{ height: 0, right: SQUARE_SIZE * 2 }}
-				animate={{ height, right: SQUARE_SIZE * 2 }}
-				transition={{
-					duration: 0.9,
-					ease: "easeOut",
-				}}
-				style={{ height }}
-			></motion.div>
-			{new Array(Math.floor(height / SQUARE_SIZE)).fill(0).map((_, i) => (
+				className="w-0.25 bg-white/10 absolute"
+				initial={{ scaleY: 0, right: squareSize * 2 }}
+				animate={{ scaleY: 1, right: squareSize * 2 }}
+				transition={{ duration: 0.9, ease: "easeOut" }}
+				style={{ height, transformOrigin: "top" }}
+			/>
+			{rows.map((i) => (
 				<motion.div
-					key={i}
-					className="w-44 right-0 top-8 h-0.25 absolute bg-white/10"
-					initial={{ width: 0 }}
-					animate={{
-						width: isMobile ? (i % 2 ? 44 : 56) : i % 2 ? 144 : 176,
-					}}
-					transition={{
-						delay: 0.01 + i * 0.03,
-						duration: 0.3,
-						ease: "easeOut",
-					}}
+					key={`right-${i}`}
+					className="right-0 top-8 h-0.25 absolute bg-white/10"
+					initial={{ scaleX: 0 }}
+					whileInView={{ scaleX: 1 }}
+					viewport={{ once: true, margin: "150px" }}
+					transition={{ duration: 0.25, ease: "easeOut" }}
 					style={{
-						top: 8 * 4 + SQUARE_SIZE * i,
+						top: 32 + squareSize * i,
+						width: isMobile ? (i % 2 ? 44 : 56) : i % 2 ? 144 : 176,
+						transformOrigin: "right",
 					}}
-				></motion.div>
+				/>
 			))}
 		</div>
 	);
 };
 
-export default Grid;
+export default memo(Grid);

@@ -11,7 +11,7 @@ import {
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import useToggleableCursor from "@/hooks/useToggleableCursor";
 import { useWindowDimensions } from "@/hooks/useWindowDimensions";
 import DisableCursor from "./components/DisableCursor";
@@ -25,13 +25,12 @@ import ProjectsSection from "./components/sections/ProjectsSection";
 import StackSection from "./components/sections/StackSection";
 import { ScrollContext, type SectionInfo } from "./context/ScrollContext";
 
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
+
 export default function Home() {
 	const { height, isMobile } = useWindowDimensions();
 
 	const { isEnabled, toggleCursor } = useToggleableCursor();
-
-	gsap.registerPlugin(useGSAP);
-	gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 	const scrollSmootherRef = useRef<ScrollSmoother>(null);
 
@@ -41,47 +40,87 @@ export default function Home() {
 		icon: RiHome2Line,
 	});
 
-	useGSAP(() => {
-		scrollSmootherRef.current = ScrollSmoother.create({
-			smooth: 0.8,
-			effects: true,
-			smoothTouch: 0.1,
-			onUpdate: (self) => setGridHeight(self.scrollTop() + height),
-		});
-
-		// Define sections with their info
-		const sections = [
-			{ id: "#hero-section", name: "Homepage", icon: RiHome2Line },
-			{ id: "#stack-section", name: "Stack for", icon: RiComputerLine },
-			{
-				id: "#projects-section",
-				name: "Featured Projects",
-				icon: RiStarSmileLine,
-			},
-			{ id: "#pricing-section", name: "Pricing", icon: RiMoneyDollarCircleLine },
-			{ id: "#contact-section", name: "Contact", icon: RiPhoneLine },
-		];
-
-		// Create ScrollTrigger for each section
-		sections.forEach((section) => {
-			ScrollTrigger.create({
-				trigger: section.id,
-				start: "top 150px",
-				end: "bottom 150px",
-				onEnter: () => setCurrentSection({ name: section.name, icon: section.icon }),
-				onEnterBack: () =>
-					setCurrentSection({ name: section.name, icon: section.icon }),
+	useGSAP(
+		() => {
+			scrollSmootherRef.current = ScrollSmoother.create({
+				smooth: isMobile ? 0 : 0.8,
+				effects: !isMobile,
+				smoothTouch: 0,
 			});
-		});
+
+			// Define sections with their info
+			const sections = [
+				{ id: "#hero-section", name: "Homepage", icon: RiHome2Line },
+				{ id: "#stack-section", name: "Stack for", icon: RiComputerLine },
+				{
+					id: "#projects-section",
+					name: "Featured Projects",
+					icon: RiStarSmileLine,
+				},
+				{ id: "#pricing-section", name: "Pricing", icon: RiMoneyDollarCircleLine },
+				{ id: "#contact-section", name: "Contact", icon: RiPhoneLine },
+			];
+
+			// Create ScrollTrigger for each section
+			sections.forEach((section) => {
+				ScrollTrigger.create({
+					trigger: section.id,
+					start: "top 150px",
+					end: "bottom 150px",
+					onEnter: () =>
+						setCurrentSection({ name: section.name, icon: section.icon }),
+					onEnterBack: () =>
+						setCurrentSection({ name: section.name, icon: section.icon }),
+				});
+			});
+
+			return () => {
+				scrollSmootherRef.current?.kill();
+				scrollSmootherRef.current = null;
+			};
+		},
+		{ dependencies: [isMobile] },
+	);
+
+	useEffect(() => {
+		let raf = 0;
+		const content = document.getElementById("smooth-content");
+
+		const updateGridHeight = () => {
+			cancelAnimationFrame(raf);
+			raf = requestAnimationFrame(() => {
+				const nextHeight = Math.max(
+					content?.scrollHeight ?? 0,
+					document.documentElement.scrollHeight,
+					height,
+				);
+				setGridHeight((previous) =>
+					Math.abs(previous - nextHeight) > 8 ? nextHeight : previous,
+				);
+			});
+		};
+
+		updateGridHeight();
+		const resizeObserver = content ? new ResizeObserver(updateGridHeight) : null;
+		if (content) resizeObserver?.observe(content);
+		window.addEventListener("resize", updateGridHeight, { passive: true });
+		ScrollTrigger.addEventListener("refresh", updateGridHeight);
+
+		return () => {
+			cancelAnimationFrame(raf);
+			resizeObserver?.disconnect();
+			window.removeEventListener("resize", updateGridHeight);
+			ScrollTrigger.removeEventListener("refresh", updateGridHeight);
+		};
 	}, [height]);
 
 	const onClickPrimary = useCallback(() => {
 		scrollSmootherRef.current?.scrollTo("#contact-section", true, "top 100px");
-	}, [scrollSmootherRef.current]);
+	}, []);
 
 	const onClickSecondary = useCallback(() => {
 		scrollSmootherRef.current?.scrollTo("#stack-section", true, "top 100px");
-	}, [scrollSmootherRef.current]);
+	}, []);
 
 	return (
 		<>
